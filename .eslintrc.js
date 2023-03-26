@@ -1,13 +1,18 @@
 // rule reference: http://eslint.org/docs/rules
 // individual rule reference: http://eslint.org/docs/rules/NAME-OF-RULE
 module.exports = {
-    parser: 'vue-eslint-parser',
     parserOptions: {
         'parser': '@babel/eslint-parser',
         'sourceType': 'module',
         'ecmaVersion': 8,
         'requireConfigFile': false
     },
+    extends: [
+        // add more generic rulesets here
+        'eslint:recommended',
+        'plugin:vue/vue3-recommended',
+        'plugin:compat/recommended',
+    ],
     plugins: [
         'compat'
     ],
@@ -16,5 +21,8 @@ module.exports = {
         'prefer-spread': [0],
         'no-plusplus': ['error', { allowForLoopAfterthoughts: true }],
         'prefer-arrow-callback': ['error', { allowNamedFunctions: true }],
+        'no-undef': 'off',
+        'no-unused-vars': 'off',
+        'no-prototype-builtins': 'off'
     },
 };

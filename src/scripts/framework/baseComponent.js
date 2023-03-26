@@ -25,7 +25,6 @@ export default class BaseComponent {
             ...this._options,
             ...defaults
         };
-        return this._options;
     }
 
     // Create an instance of the component and associate it with a DOM node

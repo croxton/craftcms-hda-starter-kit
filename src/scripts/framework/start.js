@@ -9,7 +9,7 @@ import LoadComponents from './loadComponents';
 import AsyncAlpine from 'async-alpine';
 import Alpine from 'alpinejs'
 
-/* global component imports */
+/* site-wide component imports */
 import LazysizesInit from '../components/global/lazysizesInit';
 import Menu from '../components/global/menu';
 import Metadata from '../components/global/metadata';

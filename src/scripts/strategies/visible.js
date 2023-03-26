@@ -15,6 +15,10 @@ const visible = (selector=null, requirement) => {
                 }
             }, { rootMargin });
 
+            const test = function() {
+                var test3 = 'ss';
+            }
+
             // observe element
             let elm = document.querySelector(selector);
             if (elm) {

@@ -1,19 +1,19 @@
 <template>
   <l-map
-      :zoom="zoom"
-      :minZoom="3"
-      :maxZoom="18"
-      :zoomAnimation="true"
-      :center="[latitude,longitude]"
-      style="height: 500px; width: 100%"
+    :zoom="zoom"
+    :min-zoom="3"
+    :max-zoom="18"
+    :zoom-animation="true"
+    :center="[latitude,longitude]"
+    style="height: 500px; width: 100%"
   >
     <l-tile-layer
-        :url="url"
-        :attribution="attribution"
+      :url="url"
+      :attribution="attribution"
     />
     <l-marker :lat-lng="[latitude,longitude]" />
   </l-map>
-  <map-caption :caption="caption"></map-caption>
+  <map-caption :caption="caption" />
 </template>
 
 <script>
@@ -33,13 +33,22 @@ export default {
     LMap,
     LTileLayer,
     LMarker,
-    LIcon,
+    //LIcon,
     MapCaption
   },
   props: {
-    latitude: String,
-    longitude: String,
-    caption: String
+    latitude: {
+      type: String,
+      default: '0'
+    },
+    longitude: {
+      type: String,
+      default: '0'
+    },
+    caption:{
+      type: [String, null],
+      default: null
+    },
   },
   data() {
     return {

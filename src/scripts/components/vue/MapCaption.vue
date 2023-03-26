@@ -2,13 +2,18 @@
 export default {
   name: "MapCaption",
   props: {
-    caption: String,
+    caption:{
+      type: [String, null],
+      default: null
+    },
   },
 }
 </script>
 
 <template>
-  <p class="bg-gray-200 p-4 italic">{{ caption }}</p>
+  <p class="bg-gray-200 p-4 italic">
+    {{ caption }}
+  </p>
 </template>
 
 <style>

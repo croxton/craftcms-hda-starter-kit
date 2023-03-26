@@ -64,11 +64,13 @@ class Viewport {
         document.documentElement.style.setProperty('--scrollbarWidth', (scrollbarWidth + "px"));
     }
 
-    debounce = (fn, time) => {
+    debounce(fn, time) {
         time = time || 100; // 100 by default if no param
         let timer;
-        return function(event){
-            if (timer) clearTimeout(timer);
+        return function(event) {
+            if (timer) {
+                clearTimeout(timer);
+            }
             timer = setTimeout(fn, time, event);
         };
     }

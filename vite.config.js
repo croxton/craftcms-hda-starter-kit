@@ -1,5 +1,6 @@
 import basicSsl from '@vitejs/plugin-basic-ssl';
 import dynamicImport from 'vite-plugin-dynamic-import'
+import viteEslintPlugin from 'vite-plugin-eslint';
 import legacy from '@vitejs/plugin-legacy';
 import ViteRestart from 'vite-plugin-restart';
 import { viteStaticCopy } from 'vite-plugin-static-copy';
@@ -23,6 +24,10 @@ export default ({ command }) => ({
         dynamicImport(),
         legacy({
             targets: ['defaults', 'not IE 11']
+        }),
+        viteEslintPlugin({
+            cache: false,
+            fix: true,
         }),
         ViteRestart({
             reload: [

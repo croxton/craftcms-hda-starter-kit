@@ -23,4 +23,4 @@ if (typeof htmx != "undefined") {
 }
 
 // Bootstrap our js framework
-const start = new Start();
+new Start();
