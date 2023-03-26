@@ -1,4 +1,5 @@
 import basicSsl from '@vitejs/plugin-basic-ssl';
+import dynamicImport from 'vite-plugin-dynamic-import'
 import legacy from '@vitejs/plugin-legacy';
 import ViteRestart from 'vite-plugin-restart';
 import vue from '@vitejs/plugin-vue'
@@ -12,12 +13,13 @@ export default ({ command }) => ({
         outDir: './web/dist/',
         rollupOptions: {
             input: {
-                app: './src/js/main.js',
+                app: './src/scripts/main.js',
             }
         },
     },
     plugins: [
         basicSsl(),
+        dynamicImport(),
         legacy({
             targets: ['defaults', 'not IE 11']
         }),

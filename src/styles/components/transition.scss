@@ -1,0 +1,64 @@
+/* ============================================================================
+   COMPONENTS -> TRANSITIONS
+   ========================================================================= */
+
+/**
+ * Page transition indicator
+ */
+
+.c-transition {
+  bottom:0;
+  left:0;
+  opacity:0;
+  position:fixed;
+  right:0;
+  top:0;
+  transition-duration:400ms;
+  transition-delay:300ms; // delays fade out
+  transition-property:visibility,opacity;
+  transition-timing-function:cubic-bezier(.19,1,.22,1);
+  visibility:hidden;
+  z-index:999;
+  pointer-events: none;
+  // If you want to fade out/in the page between transitions:
+  //background-color:#fff;
+}
+
+/* disable boosted links during transition */
+.htmx-request a[hx-boost="true"],
+.htmx-request [hx-boost="true"] a {
+  pointer-events: none;
+}
+
+.htmx-request .c-transition,
+.htmx-added .c-transition,
+.htmx-settling .c-transition,
+.htmx-swapping .c-transition {
+  opacity:1;
+  visibility:visible;
+  transition-delay:0s;
+}
+
+.c-transition::after{
+  animation-duration:2s;
+  animation-timing-function:cubic-bezier(.16,1,.3,1);
+  background-color:theme('colors.red.500');
+  content:"";
+  height:3px;
+  left:0;
+  position:absolute;
+  right:0;
+  top:0;
+  width:100%;
+  //transition: width 0.3s cubic-bezier(.16,1,.3,1);
+}
+
+.htmx-request .c-transition::after {
+  animation-duration:10s;
+  animation-name:transition;
+}
+
+@keyframes transition{
+  0% {width:0 }
+  100%{width:100%}
+}

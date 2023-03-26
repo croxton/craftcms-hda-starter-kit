@@ -1,0 +1,15 @@
+/*
+  Show focus styles for links on keyboard tab
+*/
+
+:focus {
+  outline: none;
+}
+
+:focus-visible:not(input,select,textarea) {
+  @apply ring-2 ring-blue-500/50 ring-inset;
+}
+input[type="checkbox"]:focus-visible,
+input[type="radio"]:focus-visible {
+  @apply ring-2 ring-blue-500/50 ring-inset;
+}

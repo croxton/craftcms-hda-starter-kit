@@ -1,0 +1,17 @@
+{# Headers #}
+{% header "Vary: HX-Request, Accept-Encoding, Save-Data" %}
+{% header "Cache-Control: no-cache, max-age=0, must-revalidate, no-store" %}
+{% header "x-revision: " ~ craft.app.config.custom.revision %}
+
+{# Variables #}
+{% set htmxBoost = htmxBoost ?? craft.app.config.custom.htmxBoost %}
+{% set entry = entry ?? null %}
+{% set theme = theme ?? 'light' %}
+{% set element = (category ?? entry ?? null) %}
+{% set enabledSiteIds = craft.app.sites.getAllSiteIds(false) %}
+{% set bodyClasses = bodyClasses ?? null %}
+{% set headers = craft.app.request.getHeaders() %}
+{% set saveData = headers.get('Save-Data') == 'on' %}
+
+{# Output #}
+{% block html %}{% endblock %}

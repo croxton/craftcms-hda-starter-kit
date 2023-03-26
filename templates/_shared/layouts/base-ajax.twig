@@ -1,0 +1,39 @@
+{% extends "/_shared/global/vars" %}
+{% block html %}
+    <!DOCTYPE html>
+    <html lang="{{ currentSite.language }}" class="no-js {% if saveData %}save-data{% else %}normal-data{% endif %}">
+    <head></head>
+
+    <body id="body" class="ltr{% if bodyClasses %} {{ bodyClasses }}{% endif %}" hx-ext="ajax-header,history-preserve">
+
+    {# Main content of page #}
+    {% block main %}
+        <main id="main" hx-history-elt class="is-hx">
+            <article data-theme-context="{{ theme }}">
+                {# Content header #}
+                {% block contentHeader %}
+                {% endblock %}
+
+                {# Content #}
+                {% block content %}
+                    {# exit 404 #}
+                {% endblock %}
+
+                {# Content footer #}
+                {% block contentFooter %}
+                {% endblock %}
+            </article>
+        </main>
+
+        {# Full page refresh if we arrive here by back/forward button from an *external* website #}
+        {# This is outside <main> so won't be executed by htmx when navigating back/forward within this website #}
+        <script>
+            if ( !!window.performance && window.performance.getEntriesByType("navigation")[0].type === "back_forward") {
+                window.location.reload();
+            }
+        </script>
+
+    {% endblock %}
+    </body>
+    </html>
+{% endblock %}

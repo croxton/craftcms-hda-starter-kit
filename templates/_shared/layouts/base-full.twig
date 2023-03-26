@@ -1,0 +1,75 @@
+{% extends "/_shared/global/vars" %}
+{% block html %}
+    <!DOCTYPE html>
+    <html lang="{{ currentSite.language }}" class="no-js {% if saveData %}save-data{% else %}normal-data{% endif %}">
+    <head>
+        {% block head %}
+            {% block headMeta %}
+                {% include '_shared/partials/headMeta' %}
+            {% endblock %}
+
+            {% block headLinks %}
+                {% include '_shared/partials/headLinks' %}
+            {% endblock %}
+
+            {# Head CSS #}
+            {% block headCSS %}
+                {% include '_shared/partials/headCSS' %}
+            {% endblock %}
+
+            {# Head JS #}
+            {% block headJs %}
+                {% include '_shared/partials/headJs' %}
+            {% endblock %}
+        {% endblock %}
+    </head>
+
+    <body id="body" class="ltr{% if bodyClasses %} {{ bodyClasses }}{% endif %}" hx-ext="ajax-header,history-preserve">
+
+    {# Prgressive enhancement #}
+    <noscript>
+        <style>
+            [data-sal] {
+                opacity: 1 !important;
+                transform: none !important;
+            }
+        </style>
+    </noscript>
+
+    {# Global header #}
+    {% block header %}
+        {% include '_shared/partials/header' %}
+    {% endblock %}
+
+    {# Main content of page #}
+    {% block main %}
+        <main id="main" hx-history-elt>
+            {# Content header #}
+            {% block contentHeader %}
+            {% endblock %}
+
+            {# Content #}
+            {% block content %}
+                {% exit 404 %}
+            {% endblock %}
+
+            {# Content footer #}
+            {% block contentFooter %}
+            {% endblock %}
+
+        </main>
+    {% endblock %}
+
+    {# Global footer #}
+    {% block footer %}
+        {% include '_shared/partials/footer' %}
+    {% endblock %}
+
+    {# Footer JS #}
+    {% block footerJs %}
+        {% include '_shared/partials/footerJs' %}
+    {% endblock %}
+
+    </body>
+    </html>
+{% endblock %}
