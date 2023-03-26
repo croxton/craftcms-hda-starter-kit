@@ -2,6 +2,7 @@ import basicSsl from '@vitejs/plugin-basic-ssl';
 import dynamicImport from 'vite-plugin-dynamic-import'
 import legacy from '@vitejs/plugin-legacy';
 import ViteRestart from 'vite-plugin-restart';
+import { viteStaticCopy } from 'vite-plugin-static-copy';
 import vue from '@vitejs/plugin-vue'
 
 // https://vitejs.dev/config/
@@ -27,6 +28,14 @@ export default ({ command }) => ({
             reload: [
                 './templates/**/*',
             ],
+        }),
+        viteStaticCopy({
+            targets: [
+                {
+                    src: 'src/static',
+                    dest: ''
+                }
+            ]
         }),
         vue(),
     ],
