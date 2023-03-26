@@ -28,9 +28,6 @@ import {
 
 import MapCaption from './MapCaption.vue'
 
-// The following helps to avoid "net::ERR_INVALID_URL" errors in Chromium-like browsers without the need to unnecessarily import the files.
-LIcon.Default = {};
-
 export default {
   components: {
     LMap,
@@ -55,7 +52,4 @@ export default {
 </script>
 
 <style>
-.leaflet-default-icon-path {
-  background-image: url(https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png);
-}
 </style>
