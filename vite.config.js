@@ -17,7 +17,25 @@ export default ({ command }) => ({
         rollupOptions: {
             input: {
                 app: './src/scripts/main.js',
+            },
+            output : {
+                /*
+                Optionally, manually separate out a vendor chunk containing
+                modules imported by lots of your components
+                */
+                manualChunks: (id) => {
+                    if (id.includes("node_modules")) {
+                        if (    id.includes('alpine')
+                            ||  id.includes('lazysizes')
+                            ||  id.includes('pubsub-js')
+                            ||  id.includes('vue')
+                        ){
+                            return "vendor";
+                        }
+                    }
+                },
             }
+
         },
     },
     plugins: [
@@ -52,7 +70,7 @@ export default ({ command }) => ({
         fs: {
             strict: false
         },
-        origin: 'https://localhost:3000',
+        origin: 'https://localhost:3000', // 0.0.0.0 if using DDEV
         port: 3000,
         strictPort: true,
     }
