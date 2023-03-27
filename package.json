@@ -4,6 +4,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "build-critical": "cross-env CRITICAL_CSS=true vite build",
     "fix-scripts": "eslint --fix 'src/scripts/**/*.{vue,js,jsx,mjs}'",
     "fix-styles": "stylelint --fix 'src/styles/**/*.{css,scss}'"
   },
@@ -22,9 +23,11 @@
     "@vitejs/plugin-vue": "^4.1.0",
     "@vue-leaflet/vue-leaflet": "^0.9.0",
     "autoprefixer": "^10.4.14",
+    "cross-env": "^7.0.3",
     "eslint": "^8.36.0",
     "eslint-plugin-compat": "^4.1.2",
     "eslint-plugin-vue": "^9.10.0",
+    "rollup-plugin-critical": "^1.0.12",
     "sass": "^1.60.0",
     "stylelint": "^15.3.0",
     "stylelint-config-recommended-scss": "^9.0.1",
@@ -34,6 +37,7 @@
     "vite": "^4.2.1",
     "vite-plugin-dynamic-import": "^1.2.7",
     "vite-plugin-eslint": "^1.8.1",
+    "vite-plugin-mkcert": "^1.13.4",
     "vite-plugin-restart": "^0.3.1",
     "vite-plugin-static-copy": "^0.13.1",
     "vite-plugin-stylelint": "^4.3.0",

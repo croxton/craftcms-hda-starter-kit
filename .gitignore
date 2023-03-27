@@ -24,6 +24,7 @@ node_modules/*
 # --------------------------------------------------------------------------- #
 
 /web/dist/*
+.stylelintcache
 
 
 # CraftCMS Environment

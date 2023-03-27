@@ -39,7 +39,7 @@ return [
     /**
      * @var string The public URL to the dev server (what appears in `<script src="">` tags
      */
-    'devServerPublic' => 'https://localhost:3000/',
+    'devServerPublic' => 'http://localhost:3000/',
 
     /**
      * @var string The public URL to use when not using the dev server
@@ -82,7 +82,7 @@ return [
     /**
      * @var string File system path (or URL) to where the Critical CSS files are stored
      */
-    'criticalPath' => '@webroot/dist/criticalcss',
+    'criticalPath' => '@webroot/criticalcss',
 
     /**
      * @var string the suffix added to the name of the currently rendering template for the critical css file name
