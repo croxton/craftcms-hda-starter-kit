@@ -15,26 +15,68 @@ Includes a working demo featuring full page transitions and example `Alpine.js`,
     * Framework-agnostic - works with vanilla JS, Vue, jQuery, GSAP, Alpine.js or your framework of choice; any third party script can be integrated into the simple component lifecycle
 * SASS auto compiling, prefixing, minifying and sourcemaps
 * CSS Autoprefixer, PostCSS Preset Env for older browsers
-* Legacy bundle for older browsers
+* Legacy bundles for older browsers
 * Image optimisation
+* Critical CSS
 * Static files (fonts, images etc)
 * Eslint
 * Stylelint
-* Sensible defaults, optimised for fast development rebuilds
 
 ## Requirements
 
-Node 16+
+* Node 16+
+* PHP 8.0.2+
+* MySQL 5.7.8+ with InnoDB, MariaDB 10.2.7+, or PostgreSQL 10+
+* Composer 2.0+
 
-## Install
+OR
 
+* Docker
+* DDEV, minimum version 1.19
+
+## Installation
+
+These instruction assume you will bring your own webserver, e.g. MAMP, Laravel Valet.
+
+### Clone this repo
 ```bash
-npm install
-composer install
-php craft setup
+git clone git@github.com:croxton/craftcms-hda-starter-kit.git my-website
+cd my-project
+rm -rf .git
+# (Optional) Start a new repository:
+git init .
 ```
 
-Finally, point a webserver at the `web` directory.
+#### Create a host
+Create a host (e.g. `http://my-website.local`) pointing to the `web` directory of the new project, and a new database.
+
+#### Create `.env`
+Craft depends on environment variables set in a root .env file so you’ll need to copy the .env.example over.
+
+```bash
+cp .env.example.dev .env
+```
+
+Update the `PRIMARY_SITE_URL` to the host you created, e.g. `http://my-website.local`, and add your database credentials.
+
+#### Install Node packages
+```bash
+# Use Node 16.x or later
+npm install
+````
+
+#### Install Composer packages
+```bash
+composer install
+````
+
+#### Install Craft
+
+```bash
+php craft setup
+php craft install
+php craft plugin/install vite
+```
 
 ## Run your desired workflow:
 
@@ -45,6 +87,10 @@ Run the development server (with hot module reloading and file watching)
 Run the production build
 
     npm run build
+
+Run the production build and generate critical CSS
+
+    npm run build-critical
 
 Fix your javascript with eslint
 
