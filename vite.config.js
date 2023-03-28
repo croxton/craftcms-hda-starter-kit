@@ -14,7 +14,9 @@ import path from 'path';
 export default defineConfig(({ command, mode }) => {
     const env = loadEnv(mode, process.cwd(), '');
     let plugins = [
-        basicSsl(),
+        // Uncomment if your PRIMARY_SITE_URL begins with https://
+        // Make sure devServerPublic in config/vite.php also begins with https://
+        //basicSsl(),
         dynamicImport(),
         legacy({
             targets: ['defaults', 'not IE 11']

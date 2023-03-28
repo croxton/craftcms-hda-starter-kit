@@ -80,6 +80,8 @@ php craft install
 php craft plugin/install vite
 ```
 
+Open the`PRIMARY_SITE_URL` you specified in a browser to view your site.
+
 ### Option 2: DDEV
 
 These instructions assume you have [installed Docker and DDEV](https://ddev.readthedocs.io/en/stable/users/install/).
