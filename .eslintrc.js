@@ -1,10 +1,14 @@
 // rule reference: http://eslint.org/docs/rules
 // individual rule reference: http://eslint.org/docs/rules/NAME-OF-RULE
 module.exports = {
+    env: {
+        browser: true,
+        es2022: true
+    },
     parserOptions: {
         'parser': '@babel/eslint-parser',
         'sourceType': 'module',
-        'ecmaVersion': 8,
+        'ecmaVersion': "latest",
         'requireConfigFile': false
     },
     extends: [

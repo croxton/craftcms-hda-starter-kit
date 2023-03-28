@@ -36,8 +36,6 @@ OR
 
 ## Installation
 
-These instruction assume you will bring your own webserver, e.g. MAMP, Laravel Valet.
-
 ### Clone this repo
 ```bash
 git clone git@github.com:croxton/craftcms-hda-starter-kit.git my-website
@@ -47,10 +45,14 @@ rm -rf .git
 git init .
 ```
 
-#### Create a host
+### Option 1: BYO webserver
+
+These instruction assume you will bring your own webserver, e.g. MAMP, Laravel Valet.
+
+#### 1. Create a host
 Create a host (e.g. `http://my-website.local`) pointing to the `web` directory of the new project, and a new database.
 
-#### Create `.env`
+#### 2. Create `.env`
 Craft depends on environment variables set in a root .env file so you’ll need to copy the .env.example over.
 
 ```bash
@@ -59,18 +61,18 @@ cp .env.example.dev .env
 
 Update the `PRIMARY_SITE_URL` to the host you created, e.g. `http://my-website.local`, and add your database credentials.
 
-#### Install Node packages
+#### 3. Install Node packages
 ```bash
 # Use Node 16.x or later
 npm install
 ````
 
-#### Install Composer packages
+#### 4. Install Composer packages
 ```bash
 composer install
 ````
 
-#### Install Craft
+#### 5. Install Craft
 
 ```bash
 php craft setup
@@ -78,31 +80,127 @@ php craft install
 php craft plugin/install vite
 ```
 
-## Run your desired workflow:
+### Option 2: DDEV
+
+These instructions assume you have [installed Docker and DDEV](https://ddev.readthedocs.io/en/stable/users/install/).
+
+#### 1. Copy the DDEV-specific config files
+
+```bash
+cp vite.config.ddev.js vite.config.js
+cp config/vite.ddev.php config/vite.php
+```
+
+#### 2. Configure DDEV (Optional)
+
+You can skip this step if the name of your root directory matches your desired DDEV subdomain.
+
+If you need your local DDEV domain to be different from the name of this project's root directory, run the following command from inside said directory:
+
+```shell
+ddev config
+```
+
+Follow the prompts.
+
+-   **Project name:** `my-test-site` would establish a project URL of `https://my-test-site.ddev.site`
+-   **Docroot location:** defaults to `web`, should be kept as-is
+-   **Project Type:** defaults to `php`, should be kept as-is
+
+#### 3. Install Craft
+
+To install Craft, Vite and the [Vite](https://github.com/nystudio107/craft-vite) plugin run the following command and follow the prompts.
+
+```shell
+make install
+```
+
+This builds a Dockerized development environment running the latest version of Craft CMS and installs the front-end packages.
+
+**Pay special attention to the Craft installation prompts**. After setting the admin’s account credentials, you’ll be prompted for your desired site name and url.
+
+The **Site name** can be anything, can include spaces and capital letters, and doesn't need to correspond to your project's root folder name or DDEV domain.
+
+The **Site url** If for some reason the suggested default isn’t acceptable, answer the prompt for a url with the full url (e.g. `https://my-website.ddev.site`)
+
+_💡 If you’re unclear about the url of your project open another terminal window in the same directory and run `ddev describe`.
+
+
+## Usage
+
+### Run your desired workflow:
 
 Run the development server (with hot module reloading and file watching)
 
-    npm run dev
+```bash
+# BYO:
+npm run dev
+
+# Or, with DDEV:
+make dev
+```
 
 Run the production build
 
-    npm run build
+```bash
+# BYO:
+npm run build
+
+# Or, with DDEV:
+make build
+```
 
 Run the production build and generate critical CSS
 
-    npm run build-critical
+```bash
+# BYO:
+npm run build-critical
+
+# Or, with DDEV:
+make build-critical
+```
 
 Fix your javascript with eslint
 
-    npm run fix-scripts
+```bash
+# BYO:
+npm run fix-scripts
+
+# Or, with DDEV:
+make fix-scripts
+```
 
 Fix your styles with stylelint
 
-    npm run fix-styles   
+```bash
+# BYO:
+npm run fix-scripts
+
+# Or, with DDEV:
+make fix-styles 
+``` 
 
 View list of supported browsers for this project (see `package.json` to edit):
 
-    npx browserslist
+```bash
+# BYO:
+npx browserslist
+
+# Or, with DDEV:
+make browserslist 
+```
+
+### DDEV: Other Makefile Commands
+
+-   `make up` - Confirms your DDEV project is running. Rebuilds the containers and pushes over your SSH credentials if needed.
+-   `make install` - Runs a complete one-time process to set the project up and install Craft
+-   `make composer <command>` - Run Composer commands inside the container, e.g. `make composer install`
+-   `make craft <command>` - Run Craft commands inside the container, e.g. `make craft project-config/touch`
+-   `make npm <command>` - Run npm commands inside the container, e.g. `make npm install`
+
+### DDEV: Useful DDEV Commands
+
+<code>ddev start</code>, <code>ddev stop</code>, <code>ddev restart</code>, <code>ddev import-db</code>, <code>ddev describe</code>, and <code>ddev poweroff</code> are among [the most useful commands available when using DDEV](https://ddev.readthedocs.io/en/latest/users/cli-usage/). They can be run from any directory below your project's root directory.
 
 ## Front-end development
 

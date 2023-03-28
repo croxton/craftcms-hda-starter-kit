@@ -99,7 +99,7 @@ export default defineConfig(({ command, mode }) => {
             fs: {
                 strict: false
             },
-            origin: 'http://localhost:3000', // set to 0.0.0.0 if using DDEV
+            origin: '0.0.0.0',
             port: 3000,
             strictPort: true,
         }
