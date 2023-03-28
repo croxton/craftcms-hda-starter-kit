@@ -176,7 +176,7 @@ Fix your styles with stylelint
 
 ```bash
 # BYO:
-npm run fix-scripts
+npm run fix-styles
 
 # Or, with DDEV:
 make fix-styles 
