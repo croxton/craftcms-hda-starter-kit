@@ -9,7 +9,7 @@
 import '../styles/main.scss'
 
 /* import framework */
-import "./framework/geteventlisteners";
+import "./framework/getEventListeners";
 import HtmxInit from './framework/htmxInit';
 import Start from './framework/start';
 
