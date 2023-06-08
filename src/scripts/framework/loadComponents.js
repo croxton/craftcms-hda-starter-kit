@@ -11,11 +11,13 @@ export default class LoadComponents {
 
     constructor() {
         htmx.on('htmx:afterSwap', (htmxEvent) => {
+            htmx.config.currentTargetId = htmxEvent.target.id;
             for (const [key, entry] of Object.entries(this.registered)) {
                 this.lifeCycle(entry);
             }
         });
         htmx.on('htmx:historyRestore', (htmxEvent) => {
+            htmx.config.currentTargetId = null;
             for (const [key, entry] of Object.entries(this.registered)) {
                 this.lifeCycle(entry);
             }
