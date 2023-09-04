@@ -11,8 +11,9 @@ export default class LocalBridge extends BaseComponent {
     }
 
     mount() {
-        // We'll create a new instance for each of the component placeholders
-        // found in the swap target
+        // Create a new instance for component placeholders
+        // found in the swap target only, allowing components in parts of the
+        // page *outside* the swap target to remain unchanged.
         let targetId = htmx.config.currentTargetId ?? 'main'; // default
         let target = document.getElementById(targetId);
         let components = target.querySelectorAll(this.elm);
@@ -21,6 +22,7 @@ export default class LocalBridge extends BaseComponent {
             // load on demand
             this.lazyload(el);
         }
+        target = null;
         components = null;
     }
 
@@ -28,7 +30,6 @@ export default class LocalBridge extends BaseComponent {
         if (this.mounted) {
             let targetId = htmx.config.currentTargetId ?? 'main'; // default
             let target = document.getElementById(targetId);
-
             for (let i = this.loaded.length - 1; i >= 0; i--) {
                 // 1. unmount if it IS in the swap target (it will be re-mounted)
                 // 2. unmount if it IS NOT in the document at all
@@ -39,6 +40,7 @@ export default class LocalBridge extends BaseComponent {
                     this.loaded.splice(i, 1); // remove from array
                 }
             }
+            target = null;
         }
     }
 

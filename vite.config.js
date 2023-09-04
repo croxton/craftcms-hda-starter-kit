@@ -1,5 +1,4 @@
 import { defineConfig, loadEnv } from "vite";
-import basicSsl from '@vitejs/plugin-basic-ssl';
 import dynamicImport from 'vite-plugin-dynamic-import'
 import viteEslintPlugin from 'vite-plugin-eslint';
 import legacy from '@vitejs/plugin-legacy';
@@ -14,9 +13,6 @@ import path from 'path';
 export default defineConfig(({ command, mode }) => {
     const env = loadEnv(mode, process.cwd(), '');
     let plugins = [
-        // Uncomment if your PRIMARY_SITE_URL begins with https://
-        // Make sure devServerPublic in config/vite.php also begins with https://
-        //basicSsl(),
         dynamicImport(),
         legacy({
             targets: ['defaults', 'not IE 11']
@@ -101,7 +97,7 @@ export default defineConfig(({ command, mode }) => {
             fs: {
                 strict: false
             },
-            origin: 'http://localhost:3000', // set to 0.0.0.0 if using DDEV
+            origin: 'http://localhost:3000',
             port: 3000,
             strictPort: true,
         }
