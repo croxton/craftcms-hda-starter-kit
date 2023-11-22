@@ -1,4 +1,5 @@
 {
+  "type": "module",
   "name": "craftcms-hda-starter-kit",
   "version": "1.0.0",
   "scripts": {
@@ -19,7 +20,7 @@
   "devDependencies": {
     "@babel/eslint-parser": "^7.21.3",
     "@vitejs/plugin-basic-ssl": "^1.0.1",
-    "@vitejs/plugin-legacy": "^4.0.2",
+    "@vitejs/plugin-legacy": "^5.2.0",
     "@vitejs/plugin-vue": "^4.1.0",
     "@vue-leaflet/vue-leaflet": "^0.9.0",
     "autoprefixer": "^10.4.14",
@@ -34,13 +35,13 @@
     "stylelint-order": "^6.0.3",
     "stylelint-scss": "^4.6.0",
     "tailwindcss": "^3.2.1",
-    "vite": "^4.2.1",
+    "vite": "^5.0.2",
     "vite-plugin-dynamic-import": "^1.2.7",
     "vite-plugin-eslint": "^1.8.1",
-    "vite-plugin-mkcert": "^1.13.4",
-    "vite-plugin-restart": "^0.3.1",
-    "vite-plugin-static-copy": "^0.13.1",
-    "vite-plugin-stylelint": "^4.3.0",
+    "vite-plugin-mkcert": "^1.17.1",
+    "vite-plugin-restart": "^0.4.0",
+    "vite-plugin-static-copy": "^1.0.0",
+    "vite-plugin-stylelint": "^5.2.1",
     "vue-eslint-parser": "^9.1.0"
   },
   "browserslist": [
