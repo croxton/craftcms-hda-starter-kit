@@ -1,4 +1,5 @@
-type: php
+name: hda
+type: craftcms
 docroot: web
 php_version: "8.1"
 webserver_type: nginx-fpm
@@ -7,8 +8,12 @@ router_https_port: "443"
 xdebug_enabled: false
 additional_hostnames: []
 additional_fqdns: []
-mariadb_version: "10.6"
-mysql_version: ""
+database:
+  type: mariadb
+  version: "10.6"
+nfs_mount_enabled: false
+mutagen_enabled: false
 use_dns_when_possible: true
-composer_version: ""
-webimage_extra_packages: [gconf-service, libasound2, libatk1.0-0, libcairo2, libgconf-2-4, libgdk-pixbuf2.0-0, libgtk-3-0, libnspr4, libpango-1.0-0, libpangocairo-1.0-0, libx11-xcb1, libxcomposite1, libxcursor1, libxdamage1, libxfixes3, libxi6, libxrandr2, libxrender1, libxss1, libxtst6, fonts-liberation, libappindicator1, libnss3, xdg-utils]
+composer_version: "2"
+web_environment: []
+nodejs_version: "20.1"
