@@ -102,6 +102,14 @@ export default defineConfig(({ command, mode }) => {
             origin: 'https://localhost:3000',
             port: 3000,
             strictPort: true,
+            watch: {
+                ignored: [
+                    "**/storage/**",
+                    "**/web/**",
+                    `${__dirname}/.idea/**`,
+                    `${__dirname}/.stylelintcache/**`
+                ],
+            },
         }
     }
 });
