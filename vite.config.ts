@@ -8,6 +8,7 @@ import vue from '@vitejs/plugin-vue'
 import stylelint from 'vite-plugin-stylelint';
 import critical from "rollup-plugin-critical";
 import path from 'path';
+import mkcert from 'vite-plugin-mkcert';
 
 // https://vitejs.dev/config/
 export default defineConfig(({ command, mode }) => {
@@ -17,6 +18,7 @@ export default defineConfig(({ command, mode }) => {
         legacy({
             targets: ['defaults', 'not IE 11']
         }),
+        mkcert(),
         stylelint({
             fix: true,
         }),
@@ -97,7 +99,7 @@ export default defineConfig(({ command, mode }) => {
             fs: {
                 strict: false
             },
-            origin: 'http://localhost:3000',
+            origin: 'https://localhost:3000',
             port: 3000,
             strictPort: true,
         }

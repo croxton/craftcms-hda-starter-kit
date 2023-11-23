@@ -39,7 +39,7 @@ return [
     /**
      * @var string The public URL to the dev server (what appears in `<script src="">` tags
      */
-    'devServerPublic' => 'http://localhost:3000/',
+    'devServerPublic' => 'https://localhost:3000/',
 
     /**
      * @var string The public URL to use when not using the dev server

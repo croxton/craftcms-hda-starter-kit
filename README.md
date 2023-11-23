@@ -89,7 +89,7 @@ These instructions assume you have [installed Docker and DDEV](https://ddev.read
 #### 1. Copy the DDEV-specific config files
 
 ```bash
-cp vite.config.ddev.js vite.config.js
+cp vite.config.ddev.ts vite.config.ts
 cp config/vite.ddev.php config/vite.php
 ```
 
