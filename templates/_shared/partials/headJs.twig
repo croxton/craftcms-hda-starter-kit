@@ -1,3 +1,7 @@
-<script defer src="https://cdn.jsdelivr.net/gh/bigskysoftware/htmx@508490/src/htmx.min.js"></script>
+{# Disable automatic registering and loading of the htmx script #}
+{% do sprig.setRegisterScript(false) %}
+
+{# Use a local copy of htmx in production, rather than rely on a CDN #}
+<script defer src="https://cdn.jsdelivr.net/gh/bigskysoftware/htmx/src/htmx.min.js"></script>
 {{ craft.vite.includeCriticalCssTags() }}
 {{ craft.vite.script("src/scripts/main.js", false) }}

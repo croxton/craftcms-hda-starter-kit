@@ -2,6 +2,7 @@
   "require": {
     "craftcms/cms": "^4.5.11",
     "nystudio107/craft-vite": "^4.0.6",
+    "putyourlightson/craft-sprig": "^2.7",
     "vlucas/phpdotenv": "^5.4.0"
   },
   "require-dev": {

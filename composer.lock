@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "618cf51d3801436ae200f4845c310929",
+    "content-hash": "2c84009da4651bb257229ce2c612e17a",
     "packages": [
         {
             "name": "cebe/markdown",
@@ -793,6 +793,11 @@
         {
             "name": "doctrine/deprecations",
             "version": "1.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/doctrine/deprecations.git",
+                "reference": "4f2d4f2836e7ec4e7a8625e75c6aa916004db931"
+            },
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/doctrine/deprecations/zipball/4f2d4f2836e7ec4e7a8625e75c6aa916004db931",
@@ -801,6 +806,15 @@
             },
             "require": {
                 "php": "^7.1 || ^8.0"
+            },
+            "require-dev": {
+                "doctrine/coding-standard": "^9",
+                "phpstan/phpstan": "1.4.10 || 1.10.15",
+                "phpstan/phpstan-phpunit": "^1.0",
+                "phpunit/phpunit": "^7.5 || ^8.5 || ^9.5",
+                "psalm/plugin-phpunit": "0.18.4",
+                "psr/log": "^1 || ^2 || ^3",
+                "vimeo/psalm": "4.30.0 || 5.12.0"
             },
             "suggest": {
                 "psr/log": "Allows logging deprecations via PSR-3 logger implementation"
@@ -811,11 +825,16 @@
                     "Doctrine\\Deprecations\\": "lib/Doctrine/Deprecations"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
             "description": "A small layer on top of trigger_error(E_USER_DEPRECATED) or PSR-3 logging with options to disable all deprecations or selectively for packages.",
             "homepage": "https://www.doctrine-project.org/",
+            "support": {
+                "issues": "https://github.com/doctrine/deprecations/issues",
+                "source": "https://github.com/doctrine/deprecations/tree/1.1.2"
+            },
             "time": "2023-09-27T20:04:15+00:00"
         },
         {
@@ -1713,6 +1732,71 @@
             "time": "2023-10-27T15:25:26+00:00"
         },
         {
+            "name": "nystudio107/craft-code-editor",
+            "version": "1.0.13",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nystudio107/craft-code-editor.git",
+                "reference": "66a1ba02c0ad5de8e89d4632d5e4da1dfa193dce"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nystudio107/craft-code-editor/zipball/66a1ba02c0ad5de8e89d4632d5e4da1dfa193dce",
+                "reference": "66a1ba02c0ad5de8e89d4632d5e4da1dfa193dce",
+                "shasum": ""
+            },
+            "require": {
+                "phpdocumentor/reflection-docblock": "^5.0.0"
+            },
+            "require-dev": {
+                "craftcms/cms": "^3.0.0 || ^4.0.0"
+            },
+            "type": "yii2-extension",
+            "extra": {
+                "bootstrap": "nystudio107\\codeeditor\\CodeEditor"
+            },
+            "autoload": {
+                "psr-4": {
+                    "nystudio107\\codeeditor\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "nystudio107",
+                    "homepage": "https://nystudio107.com"
+                }
+            ],
+            "description": "Provides a code editor field with Twig & Craft API autocomplete",
+            "keywords": [
+                "Craft",
+                "Monaco",
+                "cms",
+                "code",
+                "craftcms",
+                "css",
+                "editor",
+                "javascript",
+                "markdown",
+                "twig"
+            ],
+            "support": {
+                "docs": "https://github.com/nystudio107/craft-code-editor/blob/v1/README.md",
+                "issues": "https://github.com/nystudio107/craft-code-editor/issues",
+                "source": "https://github.com/nystudio107/craft-code-editor"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/khalwat",
+                    "type": "github"
+                }
+            ],
+            "time": "2023-08-16T02:31:19+00:00"
+        },
+        {
             "name": "nystudio107/craft-plugin-vite",
             "version": "4.0.8",
             "dist": {
@@ -1837,6 +1921,11 @@
         {
             "name": "phpdocumentor/reflection-common",
             "version": "2.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phpDocumentor/ReflectionCommon.git",
+                "reference": "1d01c49d4ed62f25aa84a747ad35d5a16924662b"
+            },
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/phpDocumentor/ReflectionCommon/zipball/1d01c49d4ed62f25aa84a747ad35d5a16924662b",
@@ -1857,6 +1946,7 @@
                     "phpDocumentor\\Reflection\\": "src/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -1875,11 +1965,20 @@
                 "reflection",
                 "static analysis"
             ],
+            "support": {
+                "issues": "https://github.com/phpDocumentor/ReflectionCommon/issues",
+                "source": "https://github.com/phpDocumentor/ReflectionCommon/tree/2.x"
+            },
             "time": "2020-06-27T09:03:43+00:00"
         },
         {
             "name": "phpdocumentor/reflection-docblock",
             "version": "5.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phpDocumentor/ReflectionDocBlock.git",
+                "reference": "622548b623e81ca6d78b721c5e029f4ce664f170"
+            },
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/phpDocumentor/ReflectionDocBlock/zipball/622548b623e81ca6d78b721c5e029f4ce664f170",
@@ -1893,6 +1992,10 @@
                 "phpdocumentor/type-resolver": "^1.3",
                 "webmozart/assert": "^1.9.1"
             },
+            "require-dev": {
+                "mockery/mockery": "~1.3.2",
+                "psalm/phar": "^4.8"
+            },
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -1904,6 +2007,7 @@
                     "phpDocumentor\\Reflection\\": "src"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -1918,11 +2022,20 @@
                 }
             ],
             "description": "With this component, a library can provide support for annotations via DocBlocks or otherwise retrieve information that is embedded in a DocBlock.",
+            "support": {
+                "issues": "https://github.com/phpDocumentor/ReflectionDocBlock/issues",
+                "source": "https://github.com/phpDocumentor/ReflectionDocBlock/tree/5.3.0"
+            },
             "time": "2021-10-19T17:43:47+00:00"
         },
         {
             "name": "phpdocumentor/type-resolver",
             "version": "1.7.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phpDocumentor/TypeResolver.git",
+                "reference": "3219c6ee25c9ea71e3d9bbaf39c67c9ebd499419"
+            },
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/phpDocumentor/TypeResolver/zipball/3219c6ee25c9ea71e3d9bbaf39c67c9ebd499419",
@@ -1935,6 +2048,16 @@
                 "phpdocumentor/reflection-common": "^2.0",
                 "phpstan/phpdoc-parser": "^1.13"
             },
+            "require-dev": {
+                "ext-tokenizer": "*",
+                "phpbench/phpbench": "^1.2",
+                "phpstan/extension-installer": "^1.1",
+                "phpstan/phpstan": "^1.8",
+                "phpstan/phpstan-phpunit": "^1.1",
+                "phpunit/phpunit": "^9.5",
+                "rector/rector": "^0.13.9",
+                "vimeo/psalm": "^4.25"
+            },
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -1946,6 +2069,7 @@
                     "phpDocumentor\\Reflection\\": "src"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -1956,6 +2080,10 @@
                 }
             ],
             "description": "A PSR-5 based resolver of Class names, Types and Structural Element Names",
+            "support": {
+                "issues": "https://github.com/phpDocumentor/TypeResolver/issues",
+                "source": "https://github.com/phpDocumentor/TypeResolver/tree/1.7.3"
+            },
             "time": "2023-08-12T11:01:26+00:00"
         },
         {
@@ -2036,6 +2164,11 @@
         {
             "name": "phpstan/phpdoc-parser",
             "version": "1.24.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phpstan/phpdoc-parser.git",
+                "reference": "12f01d214f1c73b9c91fdb3b1c415e4c70652083"
+            },
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/phpstan/phpdoc-parser/zipball/12f01d214f1c73b9c91fdb3b1c415e4c70652083",
@@ -2045,6 +2178,17 @@
             "require": {
                 "php": "^7.2 || ^8.0"
             },
+            "require-dev": {
+                "doctrine/annotations": "^2.0",
+                "nikic/php-parser": "^4.15",
+                "php-parallel-lint/php-parallel-lint": "^1.2",
+                "phpstan/extension-installer": "^1.0",
+                "phpstan/phpstan": "^1.5",
+                "phpstan/phpstan-phpunit": "^1.1",
+                "phpstan/phpstan-strict-rules": "^1.0",
+                "phpunit/phpunit": "^9.5",
+                "symfony/process": "^5.2"
+            },
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -2053,10 +2197,15 @@
                     ]
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
             "description": "PHPDoc parser with support for nullable, intersection and generic types",
+            "support": {
+                "issues": "https://github.com/phpstan/phpdoc-parser/issues",
+                "source": "https://github.com/phpstan/phpdoc-parser/tree/1.24.3"
+            },
             "time": "2023-11-18T20:15:32+00:00"
         },
         {
@@ -2406,6 +2555,101 @@
                 "simple-cache"
             ],
             "time": "2021-10-29T13:26:27+00:00"
+        },
+        {
+            "name": "putyourlightson/craft-sprig",
+            "version": "2.7.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/putyourlightson/craft-sprig.git",
+                "reference": "217f2b94c412f48c6648259390dc8bfa69619f85"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/putyourlightson/craft-sprig/zipball/217f2b94c412f48c6648259390dc8bfa69619f85",
+                "reference": "217f2b94c412f48c6648259390dc8bfa69619f85",
+                "shasum": ""
+            },
+            "require": {
+                "craftcms/cms": "^4.0",
+                "nystudio107/craft-code-editor": "^1.0.0",
+                "php": "^8.0.2",
+                "putyourlightson/craft-sprig-core": "^2.6.3"
+            },
+            "type": "craft-plugin",
+            "extra": {
+                "name": "Sprig",
+                "handle": "sprig",
+                "developer": "PutYourLightsOn",
+                "developerUrl": "https://putyourlightson.com/",
+                "documentationUrl": "https://putyourlightson.com/plugins/sprig",
+                "changelogUrl": "https://raw.githubusercontent.com/putyourlightson/craft-sprig/v2/CHANGELOG.md",
+                "class": "putyourlightson\\sprig\\plugin\\Sprig"
+            },
+            "autoload": {
+                "psr-4": {
+                    "putyourlightson\\sprig\\plugin\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "mit"
+            ],
+            "description": "A reactive Twig component framework for Craft.",
+            "support": {
+                "docs": "https://putyourlightson.com/plugins/sprig",
+                "issues": "https://github.com/putyourlightson/craft-sprig/issues",
+                "source": "https://github.com/putyourlightson/craft-sprig"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/bencroker",
+                    "type": "github"
+                }
+            ],
+            "time": "2023-09-29T16:10:34+00:00"
+        },
+        {
+            "name": "putyourlightson/craft-sprig-core",
+            "version": "2.6.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/putyourlightson/craft-sprig-core.git",
+                "reference": "9c5bc247d4291d8e480954b2ae0847bea22c362f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/putyourlightson/craft-sprig-core/zipball/9c5bc247d4291d8e480954b2ae0847bea22c362f",
+                "reference": "9c5bc247d4291d8e480954b2ae0847bea22c362f",
+                "shasum": ""
+            },
+            "require": {
+                "craftcms/cms": "^4.0.0",
+                "php": "^8.0.2"
+            },
+            "require-dev": {
+                "codeception/codeception": "^4.1.29",
+                "codeception/module-asserts": "^1.3.1",
+                "codeception/module-yii2": "^1.1.5",
+                "vlucas/phpdotenv": "^5.4.1"
+            },
+            "type": "craft-module",
+            "autoload": {
+                "psr-4": {
+                    "putyourlightson\\sprig\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "mit"
+            ],
+            "description": "A reactive Twig component framework for Craft.",
+            "support": {
+                "docs": "https://github.com/putyourlightson/craft-sprig-core",
+                "issues": "https://github.com/putyourlightson/craft-sprig-core/issues",
+                "source": "https://github.com/putyourlightson/craft-sprig-core"
+            },
+            "time": "2023-09-29T16:09:43+00:00"
         },
         {
             "name": "ralouphie/getallheaders",
@@ -3186,6 +3430,11 @@
         {
             "name": "symfony/polyfill-ctype",
             "version": "v1.28.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/polyfill-ctype.git",
+                "reference": "ea208ce43cbb04af6867b4fdddb1bdbf84cc28cb"
+            },
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/ea208ce43cbb04af6867b4fdddb1bdbf84cc28cb",
@@ -3219,6 +3468,7 @@
                     "Symfony\\Polyfill\\Ctype\\": ""
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -3239,6 +3489,23 @@
                 "ctype",
                 "polyfill",
                 "portable"
+            ],
+            "support": {
+                "source": "https://github.com/symfony/polyfill-ctype/tree/v1.28.0"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
             ],
             "time": "2023-01-26T09:26:14+00:00"
         },
@@ -4593,6 +4860,11 @@
         {
             "name": "webmozart/assert",
             "version": "1.11.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/webmozarts/assert.git",
+                "reference": "11cb2199493b2f8a3b53e7f19068fc6aac760991"
+            },
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/webmozarts/assert/zipball/11cb2199493b2f8a3b53e7f19068fc6aac760991",
@@ -4607,6 +4879,9 @@
                 "phpstan/phpstan": "<0.12.20",
                 "vimeo/psalm": "<4.6.1 || 4.6.2"
             },
+            "require-dev": {
+                "phpunit/phpunit": "^8.5.13"
+            },
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -4618,6 +4893,7 @@
                     "Webmozart\\Assert\\": "src/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -4633,6 +4909,10 @@
                 "check",
                 "validate"
             ],
+            "support": {
+                "issues": "https://github.com/webmozarts/assert/issues",
+                "source": "https://github.com/webmozarts/assert/tree/1.11.0"
+            },
             "time": "2022-06-03T18:03:27+00:00"
         },
         {
@@ -5416,5 +5696,5 @@
     "platform-overrides": {
         "php": "8.0.2"
     },
-    "plugin-api-version": "2.2.0"
+    "plugin-api-version": "2.3.0"
 }
