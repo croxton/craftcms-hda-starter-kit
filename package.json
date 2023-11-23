@@ -20,7 +20,7 @@
   "devDependencies": {
     "@babel/eslint-parser": "^7.21.3",
     "@vitejs/plugin-basic-ssl": "^1.0.1",
-    "@vitejs/plugin-legacy": "^5.2.0",
+    "@vitejs/plugin-legacy": "^4.0.2",
     "@vitejs/plugin-vue": "^4.1.0",
     "@vue-leaflet/vue-leaflet": "^0.10.1",
     "autoprefixer": "^10.4.16",
@@ -36,12 +36,12 @@
     "stylelint-order": "^6.0.3",
     "stylelint-scss": "^5.3.1",
     "tailwindcss": "^3.3.5",
-    "vite": "^5.0.2",
+    "vite": "^4.5.0",
     "vite-plugin-dynamic-import": "^1.2.7",
     "vite-plugin-eslint": "^1.8.1",
     "vite-plugin-mkcert": "^1.17.1",
     "vite-plugin-restart": "^0.4.0",
-    "vite-plugin-static-copy": "^1.0.0",
+    "vite-plugin-static-copy": "^0.17.1",
     "vite-plugin-stylelint": "^5.2.1",
     "vue-eslint-parser": "^9.1.0"
   },
