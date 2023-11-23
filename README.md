@@ -50,7 +50,7 @@ git init .
 These instruction assume you will bring your own webserver, e.g. MAMP, Laravel Valet.
 
 #### 1. Create a host
-Create a host (e.g. `http://my-website.local`) pointing to the `web` directory of the new project, and a new database.
+Create a host (e.g. `https://my-website.local`) pointing to the `web` directory of the new project, and a new database.
 
 #### 2. Create `.env`
 Craft depends on environment variables set in a root .env file so you’ll need to copy the .env.example over.
@@ -59,7 +59,7 @@ Craft depends on environment variables set in a root .env file so you’ll need 
 cp .env.example.dev .env
 ```
 
-Update the `PRIMARY_SITE_URL` to the host you created, e.g. `http://my-website.local`, and add your database credentials.
+Update the `PRIMARY_SITE_URL` to the host you created, e.g. `https://my-website.local`, and add your database credentials.
 
 #### 3. Install Node packages
 ```bash
