@@ -4,8 +4,8 @@ A solid platform for front-end development when using Craft CMS as a backend, fo
 
 Includes a working demo featuring full page transitions and example `Alpine.js`, `Vue 3` and vanilla JS components.
 
-* [Craft CMS 4](https://craftcms.com/)
-* [Vite 5](https://vitejs.dev/) - provides a robust ES6 development environment with script and style injection (HMR, file watching)
+* [Craft CMS](https://craftcms.com/)
+* [Vite](https://vitejs.dev/) - provides a robust ES6 development environment with script and style injection (HMR, file watching)
 * [htmx](https://htmx.org/) for HTML-over-the-wire
 * [Tailwind CSS](https://tailwindcss.com/) for utility-first CSS
 * [Alpine.js](https://alpinejs.dev/) + [Async Alpine](https://github.com/Accudio/async-alpine) for composing behaviour directly in markup, with support for asynchronous on-demand components
