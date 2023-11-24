@@ -3,8 +3,8 @@ export default {
     mode: 'jit',
     content: [
         './templates/**/*.twig',
-        './src/**/*.{js,jsx,ts,tsx,vue}',
-        './src/**/*.{css,scss}',
+        './src/scripts/**/*.{html,vue}',
+        './src/styles/**/*.{css,scss}',
     ],
     theme: {
         extend: {},
