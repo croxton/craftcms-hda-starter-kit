@@ -63,7 +63,7 @@ export default class VueBridge extends BaseComponent {
             .then(() => {
                 // mount a Vue instance, passing props from root element (via data attributes)
                 import(
-                '../vue/' + el.dataset.vueComponent + '.vue'
+                `../vue/${el.dataset.vueComponent}.vue`
                     ).then((vueComponent) => {
                     let app = createApp(vueComponent.default, { ...el.dataset });
                     app.config.warnHandler = () => null;

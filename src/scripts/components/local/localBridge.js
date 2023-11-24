@@ -60,7 +60,7 @@ export default class LocalBridge extends BaseComponent {
             .then(() => {
                 // mount the component instance
                 import(
-                '../local/' + el.dataset.component + '.js'
+                `../local/${el.dataset.component}.js`
                     ).then((lazyComponent) => {
                     let instance = new lazyComponent.default(selector);
                     instance.mounted = true;

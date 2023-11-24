@@ -97,7 +97,7 @@ export default class LoadComponents {
         Promise.all(promises)
             .then(() => {
                 import(
-                '../components/local/' + entry.component + '.js'
+                `../components/local/${entry.component}.js`
                     ).then((lazyComponent) => {
                     this.loaded[entry.component] = new lazyComponent.default(entry.selector);
                     this.loaded[entry.component].mounted = true;
