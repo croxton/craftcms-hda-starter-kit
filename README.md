@@ -63,7 +63,7 @@ Update the `PRIMARY_SITE_URL` to the host you created, e.g. `https://my-website.
 
 #### 3. Install Node packages
 ```bash
-# Use Node 16.x or later
+# Use Node 18.x or later
 npm install
 ````
 

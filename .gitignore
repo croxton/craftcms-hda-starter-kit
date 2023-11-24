@@ -31,7 +31,7 @@ node_modules/*
 # --------------------------------------------------------------------------- #
 /.env
 
-# CraftCMS Config
+# CraftCMS Config - delete these after you have installed Craft!
 # --------------------------------------------------------------------------- #
 /config/project
 /config/license.key
