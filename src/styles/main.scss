@@ -30,7 +30,7 @@
  * https://github.com/tailwindcss/tailwindcss/blob/master/css/preflight.css
 */
 
-@tailwind base;
+@import "tailwindcss/base";
 
 /**
   * Add your own base styles here, e.g.:
@@ -61,7 +61,7 @@
 /**
  * This injects any component classes registered by plugins.
  */
-@tailwind components;
+@import "tailwindcss/components";
 
 /**
   * Add your own components here, e.g.:
@@ -81,7 +81,7 @@
  * This injects all of Tailwind's utility classes, generated based on your
  * config file.
  */
-@tailwind utilities;
+@import "tailwindcss/utilities";
 
 /**
   * Add your own utilities here, e.g.:
