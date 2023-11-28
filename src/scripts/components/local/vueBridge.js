@@ -19,36 +19,44 @@ export default class VueBridge extends BaseComponent {
         // on the entire page. Instead, create multiple small application instances and
         // mount them on the elements they are responsible for."
 
-        // We'll create a new Vue application instance for each of the vue component placeholders in the page
-        const vueComponents = document.querySelectorAll(this.elm);
-        for(let el of vueComponents) {
+        // We'll create a new Vue application instance for each of the vue component placeholders
+        // found in the swap target only, allowing components in parts of the
+        // page *outside* the swap target to remain unchanged.
+        let targetId = htmx.config.currentTargetId ?? 'main'; // default
+        let target = document.getElementById(targetId);
+        let vueComponents = target.querySelectorAll(this.elm);
 
+        for(let el of vueComponents) {
             // make sure we have a clean slate (if DOM has been retrieved from history cache)
             el.innerHTML = '';
-
             // load on demand
             this.lazyload(el);
         }
+
+        target = null;
+        vueComponents = null;
     }
 
     unmount() {
         if (this.mounted) {
-            // remove instances to release memory
-            this.vueInstances.forEach( (instance) =>{
-                // note: this will throw an error if you remove elements
-                // *inside* the root element after Vue has mounted
-                instance.unmount();
-            });
-
-            // reset references to allow memory to be reclaimed
-            this.vueInstances.length = 0;
-            this.vueInstances = [];
+            let targetId = htmx.config.currentTargetId ?? 'main'; // default
+            let target = document.getElementById(targetId);
+            for (let i = this.vueInstances.length - 1; i >= 0; i--) {
+                // 1. unmount if it IS in the swap target (it will be re-mounted)
+                // 2. unmount if it IS NOT in the document at all
+                let inTarget = target.querySelector(this.vueInstances[i].selector);
+                let inDocument = document.querySelector(this.vueInstances[i].selector);
+                if (inTarget || !inDocument) {
+                    this.vueInstances[i].instance.unmount();
+                    this.vueInstances.splice(i, 1); // remove from array
+                }
+            }
+            target = null;
         }
     }
 
     /**
      * Import a Vue component on demand, optionally using a loading strategy
-     * (These are the same strategies provided by Async Alpine)
      *
      * @param el
      */
@@ -68,7 +76,11 @@ export default class VueBridge extends BaseComponent {
                     let app = createApp(vueComponent.default, { ...el.dataset });
                     app.config.warnHandler = () => null;
                     app.mount(el);
-                    this.vueInstances.push(app);
+                    this.vueInstances.push({
+                        name:el.dataset.vueComponent,
+                        selector: selector,
+                        instance: app
+                    });
                 });
             });
     }
