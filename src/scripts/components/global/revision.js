@@ -19,12 +19,14 @@ class Revision {
                 let metaRev = document.querySelector('meta[name="application-name"]');
                 if (metaRev) {
                     currentRevision = metaRev.dataset.revision;
+                    metaRev = null;
                 }
 
                 // New revision deployed, so we need to hard refresh - alert user with a dialog
                 if (currentRevision !== revision) {
                     let html = document.getElementsByTagName("html")[0];
                     html.classList.add('is-revision');
+                    html = null;
                 }
             }
         });
