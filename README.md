@@ -259,7 +259,7 @@ If the element contains markup that is manipulated by the component you have cre
 </div>
 ```
 
-It is also possible to manually load a specific component and attach to a selector in `start.js`. When the selector enters the dom, the component will be loaded and mounted using the selected strategy:
+It is also possible to manually load a component and attach it to a selector in `start.js`. When the selector enters the dom, the component will be loaded and mounted using the selected strategy. Manual loading is only recommended for components that coordinate the behaviour of _multiple_ elements using Observers (e.g. [sal.js](https://mciastek.github.io/sal/)).
 
 ```js
 this.componentLoader.load('share', '[data-share]', 'visible');
@@ -305,7 +305,7 @@ In your html:
 For instructions see [Async Alpine](https://github.com/Accudio/async-alpine).
 
 #### `vueComponents()`
-Vue components are loaded on demand in content swapped by htmx, such as `<main>`. Create components in `framework/components/vue`, and attach to elements with `data-vue-component="MyComponent"`. Determine the loading strategy for the component with `data-load=""`, and pass props via additional `data-` attributes.
+Vue components are loaded on demand in content swapped by htmx, such as `<main>`. Create components in `framework/components/vue`, and attach to elements with `data-vue-component="MyComponent"`. Determine the loading strategy for the component with `data-load=""`, and pass props via the `data-options=""` attribute (which accepts any valid JSON string).
 
 No initialisation step is required for Vue components, they are loaded and mounted automatically on demand as individual Vue application instances.
 
@@ -313,12 +313,14 @@ See `components/vue/LocationMap.js` for an example.
 
 ```html
 <div 
-  id="map-london" 
+  id="map-london"
   data-vue-component="LocationMap" 
-  data-load="visible" 
-  data-latitude="51.509865" 
-  data-longitude="-0.118092" 
-  data-caption="A map of London">
+  data-load="visible"
+  data-options='{
+    "latitude": "51.509865", 
+    "longitude": "-0.118092", 
+    "caption": "A map of London"
+  }'>
 </div>
  ```
 
@@ -327,8 +329,10 @@ For more, see [Vue SFCs](https://vuejs.org/guide/scaling-up/sfc.html)
 ### Loading strategies
 Loading strategies allow you to load components asynchronously on demand instead of up-front, freeing up the main thread and speeding up page rendering. Alpine components use the `ax-load` attribute to specify the strategy, whereas vanilla JS and vue components use the `data-load` attribute.
 
+
 #### Eager
 The default strategy if not specified. If the component is present in the page on initial load, or in content swapped into the dom by htmx, it will be loaded and mounted immediately.
+
 
 #### Event
 Vanilla JS components and Vue components can listen for an event on `document.body` to be triggered before they are loaded. Pass the event name in parentheses.
@@ -381,7 +385,7 @@ Strategies can be combined by separating with a pipe |, allowing for advanced an
 
 ### Creating your own local components
 
-Local component classes must extend `framework/baseComponent.js` and have `mount()` and `unmount()` methods. See `components/local/share.js` for an example. A component would typically map to one element and manipulate the markup within it. Use publish/subscribe topics to orchestrate multiple component instances.
+Local component classes must extend `framework/baseComponent.js` and have `mount()` and `unmount()` methods. See `components/local/videoPlayer.js` for an example. A component would typically map to one element and manipulate the markup within it. Use publish/subscribe topics to orchestrate multiple component instances.
 
 #### `mount()`
 Use this method to initialise your component.
