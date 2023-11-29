@@ -42,6 +42,13 @@ export default class VideoPlayer extends BaseComponent {
 
     constructor(elm) {
         super(elm);
+
+        // default options here are merged with those set on the element
+        // with the attribute data-options='{"key":"value"}'
+        this.options = {
+            exampleOption: "default value"
+        };
+
         this.videoMount = document.querySelector(elm);
         this.videoPlayer = this.videoMount.querySelector('.c-video__player');
         this.mount();

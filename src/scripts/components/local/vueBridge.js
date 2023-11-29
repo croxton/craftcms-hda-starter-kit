@@ -62,6 +62,13 @@ export default class VueBridge extends BaseComponent {
      */
     lazyload(el) {
 
+        // props
+        let options = {};
+        let optionsFromAttribute = el.getAttribute('data-options');
+        if (optionsFromAttribute) {
+            options = JSON.parse(optionsFromAttribute);
+        }
+
         // custom import strategies
         let strategy = el.dataset.load ?? null;
         let selector = el.getAttribute('id') ? '#' + el.getAttribute('id') : '[data-vue-component="'+el.dataset.vueComponent+'"]';
@@ -73,7 +80,7 @@ export default class VueBridge extends BaseComponent {
                 import(
                 `../vue/${el.dataset.vueComponent}.vue`
                     ).then((vueComponent) => {
-                    let app = createApp(vueComponent.default, { ...el.dataset });
+                    let app = createApp(vueComponent.default, { ...options });
                     app.config.warnHandler = () => null;
                     app.mount(el);
                     this.vueInstances.push({

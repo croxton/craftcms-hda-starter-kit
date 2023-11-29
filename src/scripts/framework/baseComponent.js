@@ -21,9 +21,21 @@ export default class BaseComponent {
     }
 
     set options(defaults) {
+        let options = {};
+        if (this.elm) {
+            let mount = document.querySelector(this.elm);
+            if (mount) {
+                let optionsFromAttribute = mount.getAttribute('data-options');
+                if (optionsFromAttribute) {
+                    options = JSON.parse(optionsFromAttribute);
+                }
+                mount = null;
+            }
+        }
         this._options = {
             ...this._options,
-            ...defaults
+            ...defaults,
+            ...options,
         };
     }
 

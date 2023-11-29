@@ -241,7 +241,7 @@ For example, if you create a component class at `framework/components/local/myCo
 
 ```html
 <div id="a-unique-id" data-component="myComponent" data-load="visible"></div>
-<div id="another-unique-id" data-component="myComponent" data-load="media (min-width: 1024px)"></div>
+<div id="another-unique-id" data-component="myComponent" data-load="media (min-width: 1024px)" data-options='{"option1":"value1", "option2":"value2"}'></div>
 ```
 
 Each instance *must* have a unique ID.
@@ -403,6 +403,14 @@ export default class MyThing extends BaseComponent {
     
     constructor(elm) {
         super(elm);
+        
+        // default options here are merged with those set on the element
+        // with data-options='{"option1":"value1"}'
+        this.options = {
+            option1: "value1",
+            option2: "value2",
+        };
+
         this.mount();
     }
 
