@@ -47,8 +47,8 @@ export default class Start {
         // automatically load components with a custom strategy [data-component="myComponent" data-load="visible"]
         this.componentLoader.load('localBridge', '[data-component]', 'eager');
 
-        // manually load local components
-        this.componentLoader.load('share', '[data-share]', 'visible');
+        // manually load local components, e.g.:
+        // this.componentLoader.load('sal', '[data-sal]', 'visible');
     }
 
     // Asynchronous Alpine components

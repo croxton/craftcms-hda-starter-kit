@@ -385,7 +385,7 @@ Strategies can be combined by separating with a pipe |, allowing for advanced an
 
 ### Creating your own local components
 
-Local component classes must extend `framework/baseComponent.js` and have `mount()` and `unmount()` methods. See `components/local/videoPlayer.js` for an example. A component would typically map to one element and manipulate the markup within it. Use publish/subscribe topics to orchestrate multiple component instances.
+Local component classes must extend `framework/baseComponent.js` and have `mount()` and `unmount()` methods. See `components/local/share.js` for an example. A component would typically map to one element and manipulate the markup within it. Use publish/subscribe topics to orchestrate multiple component instances.
 
 #### `mount()`
 Use this method to initialise your component.
@@ -395,7 +395,7 @@ Use this method to remove any references to elements in the DOM so that the brow
 Remove any event listeners and observers that you created. The framework automatically tracks event listeners added to elements and provides a convenience function `clearEventListeners()` that can clean things up for you.
 
 ```html
-<div id="my-thing-1" data-component="myThing"></div>
+<div id="my-thing-1" data-component="myThing" data-options='{"message":"Hello!"}'></div>
 ```
 
 `components/local/myThing.js`:
@@ -405,14 +405,16 @@ import BaseComponent from '../../framework/baseComponent';
 
 export default class MyThing extends BaseComponent {
     
+    thing;
+    thingObserver;
+    
     constructor(elm) {
         super(elm);
         
         // default options here are merged with those set on the element
         // with data-options='{"option1":"value1"}'
         this.options = {
-            option1: "value1",
-            option2: "value2",
+            message: "Hi, I'm thing",
         };
 
         this.mount();
@@ -420,15 +422,29 @@ export default class MyThing extends BaseComponent {
 
     mount() {
         // setup and mount your component instance
-        let thing = document.querySelector(this.elm); // [data-component="thing"]
+        this.thing = document.querySelector(this.elm); // [data-component="thing"]
       
-        // do stuff with the thing!
+        // do amazing things...
+        this.thing.addEventListener("click", (e) => {
+            e.preventDefault();
+            console.log(this.options.message); // "Hello!"
+        });
+
+        this.thingObserver = new IntersectionObserver(...);
+        
     }
 
     unmount() {
         if (this.mounted) {
-          // unset references to DOM nodes
-          // and remove any event listeners or observers you created
+          // remove any event listeners you created
+          this.thing.clearEventListeners();
+
+          // remove any observers you connected
+          this.thingObserver.disconnect();
+          this.thingObserver = null;
+
+          // unset any references to DOM nodes
+          this.thing = null;
         }
     }
 }
