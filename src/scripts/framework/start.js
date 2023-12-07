@@ -4,10 +4,10 @@
  * Initialise our application
  */
 
-/* component lazy loader */
-import LoadComponents from './loadComponents';
 import AsyncAlpine from 'async-alpine';
 import Alpine from 'alpinejs'
+import { BoosterExt } from 'htmx-booster-pack';
+import Factory from './factory';
 
 /* site-wide component imports */
 import LazysizesInit from '../components/global/lazysizesInit';
@@ -18,14 +18,11 @@ import Viewport from '../components/global/viewport';
 
 export default class Start {
 
-    componentLoader = new LoadComponents();
-
     // initialise components
     constructor() {
         this.globalComponents();
         this.localComponents();
         this.asyncAlpineComponents();
-        this.vueComponents();
     }
 
     // Components that only need to be initialised ONCE on initial full page load:
@@ -39,16 +36,13 @@ export default class Start {
         new Viewport();
     }
 
-    // Lazy loaded components in htmx swapped content that have:
-    // - a lifecycle (mount | unmount)
-    // - an optional loading strategy (idle | media | visible)
+    // Local components (with Booster Pack)
+    // @see https://github.com/croxton/htmx-booster-pack
     localComponents() {
-
-        // automatically load components with a custom strategy [data-component="myComponent" data-load="visible"]
-        this.componentLoader.load('localBridge', '[data-component]', 'eager');
-
-        // manually load local components, e.g.:
-        // this.componentLoader.load('sal', '[data-sal]', 'visible');
+        // Create a custom htmx extension with the name 'component',
+        // matching elements with the attribute 'data-component'.
+        // Make sure to add 'component' to hx-ext attribute on the <body>
+        new BoosterExt(Factory, 'component');
     }
 
     // Asynchronous Alpine components
@@ -58,11 +52,5 @@ export default class Start {
         AsyncAlpine.data("message", () => import("../components/alpine/message.js"));
         AsyncAlpine.start();
         Alpine.start();
-    }
-
-    // Vue SFCs
-    vueComponents() {
-        // automatically load vue SFCs [data-vue-component="myVueComponent" data-load="visible"]
-        this.componentLoader.load('vueBridge', '[data-vue-component]', 'eager');
     }
 }

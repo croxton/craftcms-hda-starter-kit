@@ -28,12 +28,12 @@
  </div>
  */
 
-import BaseComponent from '../../framework/baseComponent';
+import { Booster } from 'htmx-booster-pack';
 import Plyr from 'plyr';
 import "plyr/dist/plyr.css";
 import PubSub from 'pubsub-js';
 
-export default class VideoPlayer extends BaseComponent {
+export default class VideoPlayer extends Booster {
 
     videoMount = null;
     videoPlayer = null;

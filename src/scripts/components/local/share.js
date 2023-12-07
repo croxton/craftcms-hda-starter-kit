@@ -1,6 +1,6 @@
-import BaseComponent from '../../framework/baseComponent';
+import { Booster } from 'htmx-booster-pack';
 
-export default class Share extends BaseComponent {
+export default class Share extends Booster {
 
     shareMount;
 
