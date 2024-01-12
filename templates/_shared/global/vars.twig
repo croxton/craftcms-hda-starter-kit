@@ -3,9 +3,6 @@
 {% header "Cache-Control: no-cache, max-age=0, must-revalidate, no-store" %}
 {% header "x-revision: " ~ craft.app.config.custom.revision %}
 
-{# Disable automatic registering and loading of the htmx script #}
-{% do sprig.setRegisterScript(false) %}
-
 {# Variables #}
 {% set htmxBoost = htmxBoost ?? craft.app.config.custom.htmxBoost %}
 {% set entry = entry ?? null %}
