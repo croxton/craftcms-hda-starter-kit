@@ -246,7 +246,7 @@ For example, if you create a component class at `framework/components/local/myCo
 
 Each instance *must* have a unique ID.
 
-### Conductors
+#### Conductors
 
 Conductors are a special type of local component for managing **multiple** elements matching a selector, rather than being attached to individual elements via `data-component=""` attributes. They can be a more efficient way to coordinate the behaviour of arbitrary groups of separated elements, such as lazy loaded images or viewport intersection animations: instead of _multiple_ instances of a component's class there will only ever be one.
 
