@@ -230,14 +230,14 @@ You may need to create bespoke styles for UI states that can’t easily be expre
 This file controls the components you wish to load, and the selectors they map to.
 
 ####  Global components
-Global components are loaded once on initial page load. They manage the state of site-wide elements and behaviours like the main menu, `<head>` metadata and window resize events. Create global components in `framework/components/global` and initialise in `globalComponents()` in `framework/start.js`.
+Global components are loaded once on initial page load. They manage the state of site-wide elements and behaviours like the main menu, `<head>` metadata and window resize events. Create global components in `components/global` and initialise in `globalComponents()` in `framework/start.js`.
 
 #### Local components
-Local components are classes attached to elements that are automatically loaded on demand in content swapped into a target by htmx, such as `<main>`, and destroyed automatically when the element they are attached to is no longer in the DOM. Create local components in `framework/components/local` and attach to elements with `data-component="myComponent"`. Determine the loading strategy for the component instance with `data-load=""`.
+Local components are classes attached to elements that are automatically loaded on demand in content swapped into a target by htmx, such as `<main>`, and destroyed automatically when the element they are attached to is no longer in the DOM. Create local components in `components/local` and attach to elements with `data-component="myComponent"`. Determine the loading strategy for the component instance with `data-load=""`.
 
 The component can appear once or multiple times in your markup, with each instance respecting the loading strategy specified for the element it is mounted on, and each instance of the class being mounted / unmounted independently. Regardless of the number of instances, the component’s script (split into an individual chunk file by Vite) will only be requested once - when a matching component is first encountered.
 
-For example, if you create a component class at `framework/components/local/myComponent.js`, you can use it in your html like this:
+For example, if you create a component class at `components/local/myComponent.js`, you can use it in your html like this:
 
 ```html
 <div id="a-unique-id" data-component="myComponent" data-load="visible"></div>
@@ -263,7 +263,7 @@ A conductor is loaded and mounted using the specified strategy when its selector
 #### Alpine Async components
 Asynchronous Alpine components can be loaded anywhere in your markup. 
 
-Create Alpine components in `framework/components/alpine`. See `components/alpine/message.js` for an example.
+Create Alpine components in `components/alpine`. See `components/alpine/message.js` for an example.
 
 Alpine components must be initialised in `asyncAlpineComponents()` in `framework/start.js`:
 
@@ -298,7 +298,7 @@ If the element controlled by Alpine contains markup, preserve the initial markup
 For instructions see [Async Alpine](https://github.com/Accudio/async-alpine).
 
 #### Vue single-file components
-Vue components are loaded on demand in content swapped by htmx, such as `<main>`. Create components in `framework/components/vue`, and attach to elements with `data-component="MyComponent"` and `data-type="vue"`. Determine the loading strategy for the component with `data-load=""`, and pass props via the `data-options=""` attribute (which accepts any valid JSON string).
+Vue components are loaded on demand in content swapped by htmx, such as `<main>`. Create components in `components/vue`, and attach to elements with `data-component="MyComponent"` and `data-type="vue"`. Determine the loading strategy for the component with `data-load=""`, and pass props via the `data-options=""` attribute (which accepts any valid JSON string).
 
 No initialisation step is required for Vue components; like local components they are loaded and mounted automatically on demand, as individual Vue application instances.
 
