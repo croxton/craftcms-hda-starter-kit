@@ -1,0 +1,46 @@
+{% extends "_shared/layouts/base" %}
+
+{# Page 4 - page4.twig #}
+
+{% block content %}
+
+    <div id="box" class="o-viewport o-viewport-1/1 md:o-viewport-4/1 text-white bg-yellow-500 flex justify-center items-center transition-colors duration-1000">
+        <h2 class="text-2xl text-white">Page 4</h2>
+    </div>
+
+    <div class="space-y-12 p-12">
+
+        <section class="space-y-12">
+
+            <header>
+                <h3 class="text-xl">Example Conductor: unveil.js</h3>
+                <p class="mt-2">
+                    Conductors are a special type of component for managing multiple elements matching a selector, rather than being attached to individual elements via <code class="bg-yellow-100 px-1 inline-block">data-component=""</code> attributes. They can be a more efficient way to coordinate the behaviour of groups of separated elements.</p>
+                <p class="mt-2">
+                    This example triggers an unveil animation when an image, or set of images in a container, has fully loaded.
+                <p>
+            </header>
+
+            <div>
+                <ul>
+                    <li>
+                        <img data-unveil loading="lazy" src="https://picsum.photos/seed/pic1/800/600" width="800" height="600" alt="">
+                    </li>
+                    <li data-unveil>
+                        <img loading="lazy" src="https://picsum.photos/seed/pic2/800/600" width="800" height="600" alt="">
+                    </li>
+                    <li data-unveil>
+                        <img loading="lazy" src="https://picsum.photos/seed/pic3/800/600" width="800" height="600" alt="">
+                    </li>
+                    <li data-unveil>
+                        <img loading="lazy" src="https://picsum.photos/seed/pic4/800/600" width="800" height="600" alt="">
+                    </li>
+                    <li data-unveil>
+                        <img loading="lazy" src="https://picsum.photos/seed/pic5/800/600" width="800" height="600" alt="">
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+    </div>
+{% endblock %}

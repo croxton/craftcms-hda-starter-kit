@@ -1,7 +1,7 @@
 import { BoosterFactory, loadStrategies } from 'htmx-booster-pack';
 import { createApp } from 'vue';
 
-export default class Factory extends BoosterFactory {
+export default class ComponentFactory extends BoosterFactory {
 
     constructor(extension='booster') {
         super(extension);

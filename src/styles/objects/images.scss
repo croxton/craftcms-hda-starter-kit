@@ -21,17 +21,13 @@ img.lazyload:not([src]):not([data-lazy-custom]) {
   transition: opacity 1s ease;
 }
 
-/* unveil a div surrounding a picture element */
-[data-unveil] {
+/* unveil an image, or an element containing an image */
+[data-unveil] img,
+img[data-unveil] {
   opacity:0;
-  transition: opacity 0.5s ease;
-
-  .lazyload,
-  .lazyloading {
-    opacity: 0.01 ! important;
-  }
-
-  &.is-lazyloaded {
-    opacity:1;
-  }
+  transition: opacity 1s linear;
+}
+[data-unveil].is-loaded img,
+img[data-unveil].is-loaded {
+  opacity:1;
 }

@@ -7,7 +7,8 @@
 import AsyncAlpine from 'async-alpine';
 import Alpine from 'alpinejs'
 import { BoosterExt } from 'htmx-booster-pack';
-import Factory from './factory';
+import ComponentFactory from './componentFactory';
+import ConductorFactory from './conductorFactory';
 
 /* site-wide component imports */
 import LazysizesInit from '../components/global/lazysizesInit';
@@ -42,7 +43,14 @@ export default class Start {
         // Create a custom htmx extension with the name 'component',
         // matching elements with the attribute 'data-component'.
         // Make sure to add 'component' to hx-ext attribute on the <body>
-        new BoosterExt(Factory, 'component');
+        new BoosterExt(ComponentFactory, 'component');
+
+        // Register 'Conductor' components
+        // Conductors are loaded and mounted / unmounted on demand using the
+        // specified strategy, whenever the selector enters / exists the DOM.
+        new ConductorFactory('component', [
+            { conductor: "unveil", selector: "[data-unveil]", strategy: "eager" }
+        ]);
     }
 
     // Asynchronous Alpine components

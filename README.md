@@ -232,10 +232,10 @@ This file controls the components you wish to load, and the selectors they map t
 ####  Global components
 Global components are loaded once on initial page load. They manage the state of site-wide elements and behaviours like the main menu, `<head>` metadata and window resize events. Create global components in `framework/components/global` and initialise in `globalComponents()` in `framework/start.js`.
 
-#### Local components (vanilla js)
-Vanilla JS components are automatically loaded on demand in content swapped into a target by htmx, such as `<main>`, using [HTMX Booster Pack](https://github.com/croxton/htmx-booster-pack). Create local components in `framework/components/local` and attach to elements with `data-component="myComponent"`. Determine the loading strategy for the component instance with `data-load=""`.
+#### Local components
+Local components are classes attached to elements that are automatically loaded on demand in content swapped into a target by htmx, such as `<main>`, and destroyed automatically when the element they are attached to is no longer in the DOM. Create local components in `framework/components/local` and attach to elements with `data-component="myComponent"`. Determine the loading strategy for the component instance with `data-load=""`.
 
-The component can appear once or multiple times in your markup, with each instance respecting the loading strategy specified for the element it is mounted on. Regardless of the number of instances, the component’s script (split into an individual chunk file by Vite) will only be requested once - when the component is first encountered.
+The component can appear once or multiple times in your markup, with each instance respecting the loading strategy specified for the element it is mounted on, and each instance of the class being mounted / unmounted independently. Regardless of the number of instances, the component’s script (split into an individual chunk file by Vite) will only be requested once - when a matching component is first encountered.
 
 For example, if you create a component class at `framework/components/local/myComponent.js`, you can use it in your html like this:
 
@@ -245,6 +245,20 @@ For example, if you create a component class at `framework/components/local/myCo
 ```
 
 Each instance *must* have a unique ID.
+
+### Conductors
+
+Conductors are a special type of local component for managing **multiple** elements matching a selector, rather than being attached to individual elements via `data-component=""` attributes. They can be a more efficient way to coordinate the behaviour of arbitrary groups of separated elements, such as lazy loaded images or viewport intersection animations: instead of _multiple_ instances of a component's class there will only ever be one.
+
+To register conductors pass a `conductors` array to the `ConductorFactory()` class. Specify the conductor name, CSS selector and loading strategy for each conductor you want to register.
+
+A conductor is loaded and mounted using the specified strategy when its selector is detected in the dom, and unmounted (but not destroyed) when it's selector is no longer found in the dom; as such, conductors are stateful - they retain any properties that you set on the class regardless of mount/unmount lifecycles, unless you destroy the properties in `unmount()`. Conductors are also not bound to a htmx target, so mounted conductors will be "refreshed" (unmount/mount) on every swap, if the selector remains in the dom after the swap.
+```html
+    new ConductorFactory('component', [
+            { conductor: "myConductor1", selector: "[data-thing-1]", strategy: "eager" }
+            { conductor: "myConductor2", selector: "[data-thing-2]", strategy: "visible" }
+    ]);
+```
 
 #### Alpine Async components
 Asynchronous Alpine components can be loaded anywhere in your markup. 
@@ -351,11 +365,11 @@ Strategies can be combined by separating with a pipe |, allowing for advanced an
 <div id="my-thing-1" data-component="myThing" data-load="idle | visible | media (min-width: 1024px)"></div>
 ```
 
-### Creating your own local components
+### Creating your own local components and conductors
 
-Local component classes must extend the `Booster` class and have `mount()` and `unmount()` methods.
+Component classes must extend the `Booster` class and have `mount()` and `unmount()` methods.
 
-See [HTMX Booster Pack](https://github.com/croxton/htmx-booster-pack) for more details.
+See [HTMX Booster Pack](https://github.com/croxton/htmx-booster-pack) for details.
 
 #### HTML:
 
