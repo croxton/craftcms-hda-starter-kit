@@ -1,6 +1,6 @@
 import { defineConfig, loadEnv } from "vite";
 import dynamicImport from 'vite-plugin-dynamic-import'
-import viteEslintPlugin from 'vite-plugin-eslint';
+import eslintPlugin from "@nabla/vite-plugin-eslint";
 import legacy from '@vitejs/plugin-legacy';
 import ViteRestart from 'vite-plugin-restart';
 import { viteStaticCopy } from 'vite-plugin-static-copy';
@@ -19,10 +19,7 @@ export default defineConfig(({ command, mode }) => {
         stylelint({
             fix: true,
         }),
-        viteEslintPlugin({
-            cache: false,
-            fix: true,
-        }),
+        eslintPlugin(),
         ViteRestart({
             reload: [
                 './templates/**/*',
