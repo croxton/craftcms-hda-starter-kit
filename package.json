@@ -29,7 +29,7 @@
     "eslint": "^8.57.0",
     "eslint-plugin-compat": "^4.2.0",
     "eslint-plugin-vue": "^9.27.0",
-    "postcss": "^8.4.38",
+    "postcss": "^8.4.39",
     "rollup-plugin-critical": "^1.0.13",
     "sass": "^1.77.8",
     "stylelint": "^16.7.0",
