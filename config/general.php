@@ -24,4 +24,11 @@ return GeneralConfig::create()
     ->allowAdminChanges(App::env('ALLOW_ADMIN_CHANGES') ?? false)
     // Disallow robots
     ->disallowRobots(App::env('DISALLOW_ROBOTS') ?? false)
+    // Set aliases
+    ->aliases([
+        '@webroot' => dirname(__DIR__) . '/web',
+        '@web' => App::env('PRIMARY_SITE_URL'),
+    ])
+    // Prevent user enumeration attacks
+    ->preventUserEnumeration()
 ;
