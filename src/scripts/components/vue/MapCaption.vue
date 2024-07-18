@@ -1,13 +1,13 @@
 <script>
 export default {
-  name: "MapCaption",
+  name: 'MapCaption',
   props: {
-    caption:{
+    caption: {
       type: [String, null],
-      default: null
+      default: null,
     },
   },
-}
+};
 </script>
 
 <template>
@@ -16,5 +16,4 @@ export default {
   </p>
 </template>
 
-<style>
-</style>
+<style></style>
