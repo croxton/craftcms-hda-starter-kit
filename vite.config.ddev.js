@@ -19,7 +19,10 @@ export default defineConfig(({ command, mode }) => {
         stylelint({
             fix: true,
         }),
-        eslintPlugin(),
+        eslintPlugin({
+            cache: false,
+            fix: true,
+        }),
         ViteRestart({
             reload: [
                 './templates/**/*',

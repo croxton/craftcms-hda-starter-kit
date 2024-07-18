@@ -30,8 +30,6 @@ build: up
 	@ddev exec npm run build
 dev: up
 	@ddev exec npm run dev
-build-critical: up
-	@ddev exec npm run build-critical
 fix-scripts: up
 	@ddev exec npm run fix-scripts
 fix-styles: up

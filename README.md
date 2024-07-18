@@ -17,7 +17,6 @@ Includes a working demo featuring full page transitions and example `Alpine.js`,
 * CSS Autoprefixer, PostCSS Preset Env for older browsers
 * Legacy bundles for older browsers
 * Image optimisation
-* Critical CSS
 * Static files (fonts, images etc)
 * Eslint
 * Stylelint
@@ -150,16 +149,6 @@ npm run build
 
 # Or, with DDEV:
 make build
-```
-
-Run the production build and generate critical CSS
-
-```bash
-# BYO:
-npm run build-critical
-
-# Or, with DDEV:
-make build-critical
 ```
 
 Fix your javascript with eslint
