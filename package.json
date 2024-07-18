@@ -5,7 +5,6 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "build-critical": "cross-env CRITICAL_CSS=true vite build",
     "fix-scripts": "eslint --fix 'src/scripts/**/*.{vue,js,jsx,mjs}'",
     "fix-styles": "stylelint --fix 'src/styles/**/*.{css,scss}'"
   },
@@ -30,7 +29,6 @@
     "eslint-plugin-compat": "^4.2.0",
     "eslint-plugin-vue": "^9.27.0",
     "postcss": "^8.4.39",
-    "rollup-plugin-critical": "^1.0.13",
     "sass": "^1.77.8",
     "stylelint": "^16.7.0",
     "stylelint-config-recommended": "^14.0.1",

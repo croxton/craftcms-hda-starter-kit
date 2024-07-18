@@ -6,7 +6,6 @@ import ViteRestart from 'vite-plugin-restart';
 import { viteStaticCopy } from 'vite-plugin-static-copy';
 import vue from '@vitejs/plugin-vue'
 import stylelint from 'vite-plugin-stylelint';
-import critical from "rollup-plugin-critical";
 import path from 'path';
 
 // https://vitejs.dev/config/
@@ -39,21 +38,6 @@ export default defineConfig(({ command, mode }) => {
         }),
         vue(),
     ];
-
-    if (env.CRITICAL_CSS === 'true') {
-        plugins = plugins.concat([
-            critical({
-                criticalUrl: env.PRIMARY_SITE_URL.charAt(env.PRIMARY_SITE_URL.length - 1) === "/" ? env.PRIMARY_SITE_URL.slice(0, env.PRIMARY_SITE_URL.length - 1) : env.PRIMARY_SITE_URL,
-                criticalBase: './web/criticalcss/',
-                criticalPages: [
-                    {uri: '/', template: 'index'}
-                ],
-                criticalConfig: {
-                    extract: true,
-                },
-            }),
-        ]);
-    }
 
     return {
         base: command === 'serve' ? '' : '/dist/',
