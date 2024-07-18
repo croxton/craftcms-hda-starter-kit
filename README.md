@@ -23,9 +23,9 @@ Includes a working demo featuring full page transitions and example `Alpine.js`,
 
 ## Requirements
 
-* Node.js 18+
-* PHP 8.0.2+
-* MySQL 5.7.8+ with InnoDB, MariaDB 10.2.7+, or PostgreSQL 10+
+* Node.js 20+
+* PHP 8.2+
+* MySQL 8.0.17+ using InnoDB, MariaDB 10.4.6+, or PostgreSQL 13+
 * Composer 2.0+
 
 OR
