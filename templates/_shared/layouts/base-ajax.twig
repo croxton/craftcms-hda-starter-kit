@@ -1,28 +1,26 @@
 {% extends "/_shared/global/vars" %}
 {% block html %}
     <!DOCTYPE html>
-    <html lang="{{ currentSite.language }}" class="no-js {% if saveData %}save-data{% else %}normal-data{% endif %}">
+    <html lang="{{ currentSite.language }}" class="no-js">
     <head></head>
 
-    <body id="body" class="ltr{% if bodyClasses %} {{ bodyClasses }}{% endif %}" hx-ext="ajax-header,history-preserve">
+    <body id="body" hx-ext="ajax-header,component">
 
     {# Main content of page #}
     {% block main %}
         <main id="main" hx-history-elt class="is-hx">
-            <article data-theme-context="{{ theme }}">
-                {# Content header #}
-                {% block contentHeader %}
-                {% endblock %}
+            {# Content header #}
+            {% block contentHeader %}
+            {% endblock %}
 
-                {# Content #}
-                {% block content %}
-                    {# exit 404 #}
-                {% endblock %}
+            {# Content #}
+            {% block content %}
+                {# exit 404 #}
+            {% endblock %}
 
-                {# Content footer #}
-                {% block contentFooter %}
-                {% endblock %}
-            </article>
+            {# Content footer #}
+            {% block contentFooter %}
+            {% endblock %}
         </main>
 
         {# Full page refresh if we arrive here by back/forward button from an *external* website #}

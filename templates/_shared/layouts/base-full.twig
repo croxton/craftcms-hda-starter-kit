@@ -1,7 +1,7 @@
 {% extends "/_shared/global/vars" %}
 {% block html %}
     <!DOCTYPE html>
-    <html lang="{{ currentSite.language }}" class="no-js {% if saveData %}save-data{% else %}normal-data{% endif %}">
+    <html lang="{{ currentSite.language }}" class="no-js">
     <head>
         {% block head %}
             {% block headMeta %}
@@ -24,7 +24,7 @@
         {% endblock %}
     </head>
 
-    <body id="body" class="ltr{% if bodyClasses %} {{ bodyClasses }}{% endif %}" hx-ext="ajax-header,component">
+    <body id="body" hx-ext="ajax-header,component">
 
     {# Prgressive enhancement #}
     <noscript>

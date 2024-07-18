@@ -16,6 +16,10 @@ export default class HtmxInit {
         //}
         //htmx.logAll();
 
+        // lock down htmx
+        htmx.config.selfRequestsOnly = true;
+        htmx.config.allowScriptTags = false;
+
         // handle response error
         htmx.on('htmx:responseError', (event) => {
             // hard redirect to final path, to let Craft handle it
