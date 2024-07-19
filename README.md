@@ -77,6 +77,7 @@ composer install
 php craft setup
 php craft install
 php craft plugin/install vite
+php craft plugin/install sprig
 ```
 
 Open the`PRIMARY_SITE_URL` you specified in a browser to view your site.
@@ -110,7 +111,7 @@ Follow the prompts.
 
 #### 3. Install Craft
 
-To install Craft, Vite and the [Vite](https://github.com/nystudio107/craft-vite) plugin run the following command and follow the prompts.
+To install Craft, Vite and the [Vite](https://github.com/nystudio107/craft-vite) and [Sprig](https://github.com/putyourlightson/craft-sprig) plugins, run the following command and follow the prompts.
 
 ```shell
 make install

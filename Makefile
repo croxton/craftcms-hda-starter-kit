@@ -70,6 +70,7 @@ install: up build
 # Just remember to update requirements in composer.json.default
 
 	@ddev exec php craft plugin/install vite
+	@ddev exec php craft plugin/install sprig
 
 	@echo "*** DONE ***"
 	@ddev describe
