@@ -13,14 +13,26 @@ use craft\helpers\App;
 /**
  * Vite config - for DDEV
  */
+
+// Decides which port to use for devServerPublic. This allows
+// you to visit the http or https port. If you plant to only
+// use http, make sure that PRIMARY_SITE_URL is set to http
+//
+// Match ports to .ddev/config.yaml -> web_extra_exposed_ports
+$host = Craft::$app->getRequest()->getIsConsoleRequest()
+    ? App::env('PRIMARY_SITE_URL')
+    : Craft::$app->getRequest()->getHostInfo();
+$httpPort = 3000;
+$httpsPort = 3001;
+$devServerPort = str_starts_with($host, 'https') ? $httpsPort : $httpPort;
+
 return [
-    'useDevServer' => App::env('ENVIRONMENT') === 'dev' || App::env('CRAFT_ENVIRONMENT') === 'dev',
-    'manifestPath' => '@webroot/dist/manifest.json',
-    'devServerPublic' => App::env('PRIMARY_SITE_URL') . ':3000',
-    'serverPublic' => App::env('PRIMARY_SITE_URL') . '/dist/',
+    'devServerPublic' => "$host:$devServerPort",
+    'serverPublic' => '/dist/',
+    'useDevServer' => App::env('CRAFT_ENVIRONMENT') === 'dev',
+    'manifestPath' => '@webroot/dist/.vite/manifest.json',
     'errorEntry' => 'src/scripts/main.js',
     'cacheKeySuffix' => '',
-    'devServerInternal' => 'http://localhost:3000',
     'checkDevServer' => false,
     'includeReactRefreshShim' => false,
     'includeModulePreloadShim' => true,

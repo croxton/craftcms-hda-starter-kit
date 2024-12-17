@@ -2,15 +2,21 @@ import { defineConfig, loadEnv } from "vite";
 import dynamicImport from 'vite-plugin-dynamic-import'
 import eslintPlugin from "@nabla/vite-plugin-eslint";
 import legacy from '@vitejs/plugin-legacy';
-import ViteRestart from 'vite-plugin-restart';
 import { viteStaticCopy } from 'vite-plugin-static-copy';
 import vue from '@vitejs/plugin-vue'
 import stylelint from 'vite-plugin-stylelint';
 import path from 'path';
 
+// Match ports in .ddev/config.yaml -> web_extra_exposed_ports
+const HTTP_PORT = 3000;
+const HTTPS_PORT = 3001;
+
 // https://vitejs.dev/config/
 export default defineConfig(({ command, mode }) => {
     const env = loadEnv(mode, process.cwd(), '');
+    const originPort = env.PRIMARY_SITE_URL.startsWith('https')
+        ? HTTPS_PORT
+        : HTTP_PORT
     let plugins = [
         dynamicImport(),
         legacy({
@@ -22,11 +28,6 @@ export default defineConfig(({ command, mode }) => {
         eslintPlugin({
             cache: false,
             fix: true,
-        }),
-        ViteRestart({
-            reload: [
-                './templates/**/*',
-            ],
         }),
         viteStaticCopy({
             targets: [
@@ -78,12 +79,17 @@ export default defineConfig(({ command, mode }) => {
             },
         },
         server: {
-            fs: {
-                strict: false
-            },
-            origin: '0.0.0.0',
-            port: 3000,
+            host: '0.0.0.0',
             strictPort: true,
+            port: HTTP_PORT,
+            origin: env.PRIMARY_SITE_URL + ':' + originPort,
+        },
+        css: {
+            preprocessorOptions: {
+                scss: {
+                    api: 'modern-compiler' // or "modern"
+                }
+            }
         }
     }
 });

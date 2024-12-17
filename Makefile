@@ -45,7 +45,7 @@ craft: up
 npm: up
 	@ddev exec npm \
 		$(filter-out $@,$(MAKECMDGOALS))
-install: up build
+install: up
 	@echo ""
 	@echo "Preparing to install Craft..."
 
@@ -72,9 +72,9 @@ install: up build
 	@ddev exec php craft plugin/install vite
 	@ddev exec php craft plugin/install sprig
 
+# Finish up
 	@echo "*** DONE ***"
 	@ddev describe
-	@ddev launch
 
 up:
 	@echo "${PURPLE}Preflight check...${RESET}"
@@ -82,10 +82,10 @@ up:
 # 👇 We'll grep for some strings ("web" and "OK") to understand if DDEV is already running
 	@if [ ! "$$(ddev describe | grep -e web -e OK )" ]; then \
 				echo "Your DDEV project is ${GREEN}starting...${RESET}"; \
-        ddev auth ssh; \
-        ddev start; \
-        ddev composer install; \
-        ddev exec npm install --loglevel=error --no-fund; \
+        @ddev auth ssh; \
+        @ddev start; \
+        @ddev composer install; \
+        @ddev exec npm install --loglevel=error --no-fund; \
     else \
         echo "${YELLOW}Your DDEV project is already running.${RESET}"; \
     fi
