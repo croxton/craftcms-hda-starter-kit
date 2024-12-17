@@ -11,7 +11,7 @@
 
 /* Settings: global variables, config switches
    ========================================================================== */
-@import 'settings/properties';
+@use 'settings/properties';
 
 /* Functions
    ========================================================================== */
@@ -30,16 +30,16 @@
  * https://github.com/tailwindcss/tailwindcss/blob/master/css/preflight.css
 */
 
-@import "tailwindcss/base";
+@use "tailwindcss/base";
 
 /**
   * Add your own base styles here, e.g.:
   *
-  * @import "base/focus";
-  * @import "base/forms";
+  * @use "base/focus";
+  * @use "base/forms";
   */
-@import 'base/disclosure';
-@import 'base/focus';
+@use 'base/disclosure';
+@use 'base/focus';
 
 /* Vendor: third party components
    ========================================================================== */
@@ -47,10 +47,10 @@
 /* Objects reusable design patterns - e.g. grids, ratios, vertical flow
    ========================================================================== */
 
-@import 'objects/images';
-@import 'objects/ratio';
-@import 'objects/share';
-@import 'objects/viewport';
+@use 'objects/images';
+@use 'objects/ratio';
+@use 'objects/share';
+@use 'objects/viewport';
 
 /* Layouts - layout skeletons
    ========================================================================== */
@@ -61,18 +61,18 @@
 /**
  * This injects any component classes registered by plugins.
  */
-@import "tailwindcss/components";
+@use "tailwindcss/components";
 
 /**
   * Add your own components here, e.g.:
   *
-  * @import "scss/components/buttons";
-  * @import "scss/components/forms";
+  * @use "scss/components/buttons";
+  * @use "scss/components/forms";
   */
-@import 'components/menu';
-@import 'components/revision';
-@import 'components/transition';
-@import 'components/video';
+@use 'components/menu';
+@use 'components/revision';
+@use 'components/transition';
+@use 'components/video';
 
 /* Utils: utility and helper classes
    ========================================================================== */
@@ -81,12 +81,12 @@
  * This injects all of Tailwind's utility classes, generated based on your
  * config file.
  */
-@import "tailwindcss/utilities";
+@use "tailwindcss/utilities";
 
 /**
   * Add your own utilities here, e.g.:
   *
-  * @import "utils/headings";
-  * @import "utils/prose";
+  * @use "utils/headings";
+  * @use "utils/prose";
   */
-@import 'utils/scrollbar';
+@use 'utils/scrollbar';

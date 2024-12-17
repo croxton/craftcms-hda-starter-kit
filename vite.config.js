@@ -2,7 +2,6 @@ import { defineConfig, loadEnv } from "vite";
 import dynamicImport from 'vite-plugin-dynamic-import'
 import eslintPlugin from "@nabla/vite-plugin-eslint";
 import legacy from '@vitejs/plugin-legacy';
-import ViteRestart from 'vite-plugin-restart';
 import { viteStaticCopy } from 'vite-plugin-static-copy';
 import vue from '@vitejs/plugin-vue'
 import stylelint from 'vite-plugin-stylelint';
@@ -24,11 +23,6 @@ export default defineConfig(({ command, mode }) => {
         eslintPlugin({
             cache: false,
             fix: true,
-        }),
-        ViteRestart({
-            reload: [
-                './templates/**/*',
-            ],
         }),
         viteStaticCopy({
             targets: [
@@ -81,7 +75,7 @@ export default defineConfig(({ command, mode }) => {
         },
         server: {
             fs: {
-                strict: false
+                strict: true
             },
             origin: 'https://localhost:3000',
             port: 3000,
@@ -90,10 +84,19 @@ export default defineConfig(({ command, mode }) => {
                 ignored: [
                     "**/storage/**",
                     "**/web/**",
+                    "**/vendor/**",
                     `${__dirname}/.idea/**`,
                     `${__dirname}/.stylelintcache/**`
                 ],
             },
+        },
+        css: {
+            preprocessorOptions: {
+                scss: {
+                    api: 'modern-compiler' // or "modern"
+                }
+            }
         }
+
     }
 });
