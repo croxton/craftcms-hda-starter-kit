@@ -6,17 +6,22 @@ import { viteStaticCopy } from 'vite-plugin-static-copy';
 import vue from '@vitejs/plugin-vue'
 import stylelint from 'vite-plugin-stylelint';
 import path from 'path';
-import mkcert from 'vite-plugin-mkcert';
+
+// Match ports in .ddev/config.yaml -> web_extra_exposed_ports
+const HTTP_PORT = 3000;
+const HTTPS_PORT = 3001;
 
 // https://vitejs.dev/config/
 export default defineConfig(({ command, mode }) => {
     const env = loadEnv(mode, process.cwd(), '');
+    const originPort = env.PRIMARY_SITE_URL.startsWith('https')
+        ? HTTPS_PORT
+        : HTTP_PORT
     let plugins = [
         dynamicImport(),
         legacy({
             targets: ['defaults', 'not IE 11']
         }),
-        mkcert(),
         stylelint({
             fix: true,
         }),
@@ -39,7 +44,7 @@ export default defineConfig(({ command, mode }) => {
         base: command === 'serve' ? '' : '/dist/',
         build: {
             emptyOutDir: true,
-            manifest: 'manifest.json',
+            manifest: true,
             outDir: './web/dist/',
             rollupOptions: {
                 input: {
@@ -74,12 +79,10 @@ export default defineConfig(({ command, mode }) => {
             },
         },
         server: {
-            fs: {
-                strict: true
-            },
-            origin: 'https://localhost:3000',
-            port: 3000,
+            host: '0.0.0.0',
             strictPort: true,
+            port: HTTP_PORT,
+            origin: env.PRIMARY_SITE_URL + ':' + originPort,
             watch: {
                 ignored: [
                     "**/storage/**",
@@ -97,6 +100,5 @@ export default defineConfig(({ command, mode }) => {
                 }
             }
         }
-
     }
 });

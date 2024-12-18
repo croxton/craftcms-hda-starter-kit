@@ -69,8 +69,13 @@ install: up
 # 👇 You can expand this list of plugins however you like.
 # Just remember to update requirements in composer.json.default
 
-	@ddev exec php craft plugin/install vite
+	@ddev exec php craft plugin/install ckeditor
+	@ddev exec php craft plugin/install image-resizer
+	@ddev exec php craft plugin/install imgixer
+	@ddev exec php craft plugin/install postmark
+	@ddev exec php craft plugin/install preparse-field
 	@ddev exec php craft plugin/install sprig
+	@ddev exec php craft plugin/install vite
 
 # Finish up
 	@echo "*** DONE ***"

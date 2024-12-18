@@ -11,23 +11,21 @@
 use craft\helpers\App;
 
 /**
- * Vite config - for DDEV
+ * Vite config.php
+ *
+ * This file exists only as a template for the Vite settings.
+ * It does nothing on its own.
+ *
+ * Don't edit this file, instead copy it to 'craft/config' as 'vite.php'
+ * and make your changes there to override default settings.
+ *
+ * Once copied to 'craft/config', this file will be multi-environment aware as
+ * well, so you can have different settings groups for each environment, just as
+ * you do for 'general.php'
  */
 
-// Decides which port to use for devServerPublic. This allows
-// you to visit the http or https port. If you plan to only
-// use http, make sure that PRIMARY_SITE_URL is set to http
-//
-// Match ports to .ddev/config.yaml -> web_extra_exposed_ports
-$host = Craft::$app->getRequest()->getIsConsoleRequest()
-    ? App::env('PRIMARY_SITE_URL')
-    : Craft::$app->getRequest()->getHostInfo();
-$httpPort = 3000;
-$httpsPort = 3001;
-$devServerPort = str_starts_with($host, 'https') ? $httpsPort : $httpPort;
-
 return [
-    'devServerPublic' => "$host:$devServerPort",
+    'devServerPublic' => 'https://localhost:3000/',
     'serverPublic' => '/dist/',
     'useDevServer' => App::env('ENVIRONMENT') === 'dev' || App::env('CRAFT_ENVIRONMENT') === 'dev',
     'manifestPath' => '@webroot/dist/.vite/manifest.json',

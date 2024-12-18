@@ -35,6 +35,8 @@ OR
 
 ## Installation
 
+Clone this repo into a new directory.
+
 ### Clone this repo
 ```bash
 git clone git@github.com:croxton/craftcms-hda-starter-kit.git my-website
@@ -44,56 +46,11 @@ rm -rf .git
 git init .
 ```
 
-### Option 1: BYO webserver
-
-These instruction assume you will bring your own webserver, e.g. MAMP, Laravel Valet.
-
-#### 1. Create a host
-Create a host (e.g. `https://my-website.local`) pointing to the `web` directory of the new project, and a new database.
-
-#### 2. Create `.env`
-Craft depends on environment variables set in a root .env file so you’ll need to copy the .env.example over.
-
-```bash
-cp .env.example.dev .env
-```
-
-Update the `PRIMARY_SITE_URL` to the host you created, e.g. `https://my-website.local`, and add your database credentials.
-
-#### 3. Install Node packages
-```bash
-# Use Node 18.x or later
-npm install
-````
-
-#### 4. Install Composer packages
-```bash
-composer install
-````
-
-#### 5. Install Craft
-
-```bash
-php craft setup
-php craft install
-php craft plugin/install vite
-php craft plugin/install sprig
-```
-
-Open the`PRIMARY_SITE_URL` you specified in a browser to view your site.
-
-### Option 2: DDEV
+### Option 1: DDEV (recommended)
 
 These instructions assume you have [installed Docker and DDEV](https://ddev.readthedocs.io/en/stable/users/install/).
 
-#### 1. Copy the DDEV-specific config files
-
-```bash
-cp vite.config.ddev.js vite.config.js
-cp config/vite.ddev.php config/vite.php
-```
-
-#### 2. Configure DDEV (Optional)
+#### 1. Configure DDEV (Optional)
 
 You can skip this step if the name of your root directory matches your desired DDEV subdomain.
 
@@ -106,12 +63,12 @@ ddev config
 Follow the prompts.
 
 -   **Project name:** `my-test-site` would establish a project URL of `https://my-test-site.ddev.site`
--   **Docroot location:** defaults to `web`, should be kept as-is
--   **Project Type:** defaults to `php`, should be kept as-is
+-   **Docroot location:** defaults to `web`, should be kept as-is (press return)
+-   **Project Type:** should be kept as-is (press return)
 
-#### 3. Install Craft
+#### 2. Install Craft
 
-To install Craft, Vite and the [Vite](https://github.com/nystudio107/craft-vite) and [Sprig](https://github.com/putyourlightson/craft-sprig) plugins, run the following command and follow the prompts.
+To install Craft and plugins, run the following command and follow the prompts.
 
 ```shell
 make install
@@ -125,8 +82,87 @@ The **Site name** can be anything, can include spaces and capital letters, and d
 
 The **Site url** If for some reason the suggested default isn’t acceptable, answer the prompt for a url with the full url (e.g. `https://my-website.ddev.site`)
 
-_💡 If you’re unclear about the url of your project open another terminal window in the same directory and run `ddev describe`.
+Once installation is complete you should see the output of `ddev describe` in your terminal, which will look something like this:
 
+```shell
+┌───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
+│ Project: craftcms-hda-starter-kit ~/projects/craftcms-hda-starter-kit https://craftcms-hda-starter-kit.ddev.site                          │
+│ Docker platform: orbstack                                                                                                                 │
+│ Router: traefik                                                                                                                           │
+├──────────────┬──────┬────────────────────────────────────────────────────────────────────────────────────────────────┬────────────────────┤
+│ SERVICE      │ STAT │ URL/PORT                                                                                       │ INFO               │
+├──────────────┼──────┼────────────────────────────────────────────────────────────────────────────────────────────────┼────────────────────┤
+│ web          │ OK   │ https://craftcms-hda-starter-kit.ddev.site                                                     │ craftcms PHP8.3    │
+│              │      │ InDocker -> Host:                                                                              │ nginx-fpm          │
+│              │      │  - web:80 -> 127.0.0.1:32768                                                                   │ docroot:'web'      │
+│              │      │  - web:443 -> 127.0.0.1:32769                                                                  │ Perf mode: mutagen │
+│              │      │  - web:3000                                                                                    │ NodeJS:20.10       │
+│              │      │  - web:8025                                                                                    │                    │
+├──────────────┼──────┼────────────────────────────────────────────────────────────────────────────────────────────────┼────────────────────┤
+│ db           │ OK   │ InDocker -> Host:                                                                              │ mysql:8.0          │
+│              │      │  - db:3306 -> 127.0.0.1:32770                                                                  │ User/Pass: 'db/db' │
+│              │      │                                                                                                │ or 'root/root'     │
+├──────────────┼──────┼────────────────────────────────────────────────────────────────────────────────────────────────┼────────────────────┤
+│ Mailpit      │      │ Mailpit: https://craftcms-hda-starter-kit.ddev.site:8026                                       │                    │
+│              │      │ Launch: ddev mailpit                                                                           │                    │
+├──────────────┼──────┼────────────────────────────────────────────────────────────────────────────────────────────────┼────────────────────┤
+│ vite         │      │ https://craftcms-hda-starter-kit.ddev.site:3001                                                │                    │
+│              │      │ InDocker: web:3000                                                                             │                    │
+├──────────────┼──────┼────────────────────────────────────────────────────────────────────────────────────────────────┼────────────────────┤
+│ Project URLs │      │ https://craftcms-hda-starter-kit.ddev.site, https://127.0.0.1:32769,                           │                    │
+│              │      │ http://craftcms-hda-starter-kit.ddev.site, http://127.0.0.1:32768                              │                    │
+└──────────────┴──────┴────────────────────────────────────────────────────────────────────────────────────────────────┴────────────────────┘
+```
+
+### Option 2: BYO webserver
+
+These instruction assume you will bring your own webserver for local development, e.g. MAMP, Laravel Valet.
+
+#### 1. Replace the default Vite config files
+
+```bash
+cp vite.config.local.js vite.config.js
+cp config/vite.local.php config/vite.php
+```
+
+#### 2. Create a host
+Create a host (e.g. `https://my-website.local`) pointing to the `web` directory of the new project, and a new database.
+
+#### 3. Create `.env`
+Craft depends on environment variables set in a root .env file so you’ll need to copy the .env.example over.
+
+```bash
+cp .env.example.dev .env
+```
+
+Update the `PRIMARY_SITE_URL` to the host you created, e.g. `https://my-website.local`, and add your database credentials.
+
+#### 4. Install Node packages
+```bash
+# Use Node 20.x or later
+npm install
+````
+
+#### 5. Install Composer packages
+```bash
+composer install
+````
+
+#### 6. Install Craft
+
+```bash
+php craft setup
+php craft install
+php craft plugin/install ckeditor
+php craft plugin/install image-resizer
+php craft plugin/install imgixer
+php craft plugin/install postmark
+php craft plugin/install preparse-field
+php craft plugin/install sprig
+php craft plugin/install vite
+```
+
+Open the`PRIMARY_SITE_URL` you specified in a browser to view your site.
 
 ## Usage
 
@@ -135,51 +171,51 @@ _💡 If you’re unclear about the url of your project open another terminal wi
 Run the development server (with hot module reloading and file watching)
 
 ```bash
-# BYO:
-npm run dev
-
-# Or, with DDEV:
+# DDEV:
 make dev
+
+# Or, with BYO:
+npm run dev
 ```
 
 Run the production build
 
 ```bash
-# BYO:
-npm run build
-
-# Or, with DDEV:
+# DDEV:
 make build
+
+# Or, with BYO:
+npm run build
 ```
 
 Fix your javascript with eslint
 
 ```bash
-# BYO:
-npm run fix-scripts
-
-# Or, with DDEV:
+# DDEV:
 make fix-scripts
+
+# Or, with BYO:
+npm run fix-scripts
 ```
 
 Fix your styles with stylelint
 
 ```bash
-# BYO:
-npm run fix-styles
-
-# Or, with DDEV:
+# DDEV:
 make fix-styles 
+
+# Or, with BYO:
+npm run fix-styles
 ``` 
 
 View list of supported browsers for this project (see `package.json` to edit):
 
 ```bash
-# BYO:
-npx browserslist
-
-# Or, with DDEV:
+# DDEV:
 make browserslist 
+
+# Or, with BYO:
+npx browserslist
 ```
 
 ### DDEV: Other Makefile Commands
