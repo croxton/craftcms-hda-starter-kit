@@ -23,7 +23,7 @@ endif
 
 # 👆https://gist.github.com/rsperl/d2dfe88a520968fbc1f49db0a29345b9
 
-.PHONY: build dev composer craft npm pull up install
+.PHONY: build dev fix-scripts fix-styles browserslist composer craft npm install-craft up
 
 build: up
 	@echo "Preparing to build..."
@@ -45,7 +45,7 @@ craft: up
 npm: up
 	@ddev exec npm \
 		$(filter-out $@,$(MAKECMDGOALS))
-install: up
+install-craft: up
 	@echo ""
 	@echo "Preparing to install Craft..."
 

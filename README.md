@@ -71,7 +71,7 @@ Follow the prompts.
 To install Craft and plugins, run the following command and follow the prompts.
 
 ```shell
-make install
+make install-craft
 ```
 
 This builds a Dockerized development environment running the latest version of Craft CMS and installs the front-end packages.
@@ -221,7 +221,7 @@ npx browserslist
 ### DDEV: Other Makefile Commands
 
 -   `make up` - Confirms your DDEV project is running. Rebuilds the containers and pushes over your SSH credentials if needed.
--   `make install` - Runs a complete one-time process to set the project up and install Craft
+-   `make install-craft` - Runs a complete one-time process to set the project up and install Craft
 -   `make composer <command>` - Run Composer commands inside the container, e.g. `make composer install`
 -   `make craft <command>` - Run Craft commands inside the container, e.g. `make craft project-config/touch`
 -   `make npm <command>` - Run npm commands inside the container, e.g. `make npm install`
