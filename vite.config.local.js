@@ -71,6 +71,7 @@ export default defineConfig(({ command, mode }) => {
                 '@': path.resolve(__dirname, 'src'),
                 '@css': path.resolve(__dirname, 'src/styles'),
                 '@js': path.resolve(__dirname, 'src/scripts'),
+                '@assets': path.resolve(__dirname, 'src/assets'),
             },
         },
         server: {

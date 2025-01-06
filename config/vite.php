@@ -22,12 +22,9 @@ use craft\helpers\App;
 $host = Craft::$app->getRequest()->getIsConsoleRequest()
     ? App::env('PRIMARY_SITE_URL')
     : Craft::$app->getRequest()->getHostInfo();
-$httpPort = 3000;
-$httpsPort = 3001;
-$devServerPort = str_starts_with($host, 'https') ? $httpsPort : $httpPort;
 
 return [
-    'devServerPublic' => "$host:$devServerPort",
+    'devServerPublic' => "$host:3001",
     'serverPublic' => '/dist/',
     'useDevServer' => App::env('ENVIRONMENT') === 'dev' || App::env('CRAFT_ENVIRONMENT') === 'dev',
     'manifestPath' => '@webroot/dist/.vite/manifest.json',

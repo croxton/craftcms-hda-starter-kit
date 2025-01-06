@@ -13,10 +13,13 @@ const HTTPS_PORT = 3001;
 
 // https://vitejs.dev/config/
 export default defineConfig(({ command, mode }) => {
+
+    let origin = 'https://localhost' + ':' + HTTPS_PORT;
     const env = loadEnv(mode, process.cwd(), '');
-    const originPort = env.PRIMARY_SITE_URL.startsWith('https')
-        ? HTTPS_PORT
-        : HTTP_PORT
+    if (env.hasOwnProperty('PRIMARY_SITE_URL')) {
+        origin = env.PRIMARY_SITE_URL + ':' + HTTPS_PORT;
+    }
+
     let plugins = [
         dynamicImport(),
         legacy({
@@ -76,20 +79,22 @@ export default defineConfig(({ command, mode }) => {
                 '@': path.resolve(__dirname, 'src'),
                 '@css': path.resolve(__dirname, 'src/styles'),
                 '@js': path.resolve(__dirname, 'src/scripts'),
+                '@assets': path.resolve(__dirname, 'src/assets'),
             },
         },
         server: {
             host: '0.0.0.0',
             strictPort: true,
             port: HTTP_PORT,
-            origin: env.PRIMARY_SITE_URL + ':' + originPort,
+            origin: origin,
             watch: {
                 ignored: [
                     "**/storage/**",
                     "**/web/**",
                     "**/vendor/**",
                     `${__dirname}/.idea/**`,
-                    `${__dirname}/.stylelintcache/**`
+                    `${__dirname}/.stylelintcache/**`,
+                    `${__dirname}/.eslintcache/**`
                 ],
             },
         },
