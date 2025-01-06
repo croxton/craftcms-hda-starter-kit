@@ -1,7 +1,7 @@
 {
   "require": {
     "craftcms/ckeditor": "^4.4.0",
-    "craftcms/cms": "^5.4.8",
+    "craftcms/cms": "^5.5.8",
     "craftcms/postmark": "^3.1.0",
     "croxton/imgixer": "^3.0.1",
     "jalendport/craft-preparse": "^3.0.0-alpha.2",
