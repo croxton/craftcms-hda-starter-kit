@@ -14,10 +14,10 @@ const HTTPS_PORT = 3001;
 // https://vitejs.dev/config/
 export default defineConfig(({ command, mode }) => {
 
-    let origin = 'https://localhost' + ':' + HTTPS_PORT;
+    let origin = 'https://localhost';
     const env = loadEnv(mode, process.cwd(), '');
     if (env.hasOwnProperty('PRIMARY_SITE_URL')) {
-        origin = env.PRIMARY_SITE_URL + ':' + HTTPS_PORT;
+        origin = env.PRIMARY_SITE_URL;
     }
 
     let plugins = [
@@ -83,10 +83,12 @@ export default defineConfig(({ command, mode }) => {
             },
         },
         server: {
+            allowedHosts: true,
+            cors: { origin: origin },
             host: '0.0.0.0',
-            strictPort: true,
+            origin: origin + ':' + HTTPS_PORT,
             port: HTTP_PORT,
-            origin: origin,
+            strictPort: true,
             watch: {
                 ignored: [
                     "**/storage/**",
