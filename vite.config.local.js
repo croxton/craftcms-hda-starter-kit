@@ -76,7 +76,7 @@ export default defineConfig(({ command, mode }) => {
         },
         server: {
             allowedHosts: true,
-            cors: { origin: 'https://localhost' },
+            cors: { origin: /https?:\/\/([A-Za-z0-9\-\.]+)?(localhost|\.local|\.test|\.site)(?::\d+)?$/ },
             origin: 'https://localhost:3000',
             port: 3000,
             strictPort: true,

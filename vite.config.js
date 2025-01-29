@@ -14,11 +14,8 @@ const HTTPS_PORT = 3001;
 // https://vitejs.dev/config/
 export default defineConfig(({ command, mode }) => {
 
-    let origin = 'https://localhost';
     const env = loadEnv(mode, process.cwd(), '');
-    if (env.hasOwnProperty('PRIMARY_SITE_URL')) {
-        origin = env.PRIMARY_SITE_URL;
-    }
+    const origin = env.PRIMARY_SITE_URL ?? 'https://localhost';
 
     let plugins = [
         dynamicImport(),
