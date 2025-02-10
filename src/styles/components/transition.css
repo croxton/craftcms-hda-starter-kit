@@ -14,14 +14,12 @@
   position:fixed;
   right:0;
   top:0;
-  transition-delay:300ms; // delays fade out
+  transition-delay:300ms;
   transition-duration:400ms;
   transition-property:visibility,opacity;
   transition-timing-function:cubic-bezier(.19,1,.22,1);
   visibility:hidden;
   z-index:999;
-  // If you want to fade out/in the page between transitions:
-  //background-color:#fff;
 }
 
 /* disable boosted links during transition */
@@ -50,7 +48,6 @@
   right:0;
   top:0;
   width:100%;
-  //transition: width 0.3s cubic-bezier(.16,1,.3,1);
 }
 
 .htmx-request .c-transition::after {

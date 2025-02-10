@@ -217,14 +217,14 @@
                 },
             ]
             }'>
-            <details class="c-search__item" role="list" :open="isOpen">
+            <details role="list" :open="isOpen">
                 <summary aria-haspopup="listbox" class="appearance-none list-none">
                     <input class="p-2 border border-gray-400 rounded w-full text-gray-600 focus:ring-1 focus:ring-blue-500 focus:border-blue-500 focus:outline-none" type="text" @input="getItems" placeholder="search ..." x-model="search">
                 </summary>
-                <ul class="border border-200 rounded p-2 shadow-xl max-h-64 overflow-y-scroll" role="listbox" x-on:click.outside="closeSearch">
+                <ul class="border border-gray-200 rounded p-2 shadow-lg max-h-64 overflow-y-scroll" role="listbox" x-on:click.outside="closeSearch">
                     <template x-for="item in getItems" :key="item.id">
                         <li class="p-2 flex flow-row justify-center items-center">
-                            <img class="w-16 h-16 rounded shadow-lg mr-2" :src="item.profile_image" alt="">
+                            <img class="w-16 h-16 rounded shadow-md mr-2" :src="item.profile_image" alt="">
                             <a class="text-lg text-gray-700 w-full flex flex-row items-center cursor-pointer" x-text="item.employee_name" x-on:click="cleanSearch"></a>
                         </li>
                     </template>
@@ -242,7 +242,7 @@
         </header>
 
         <div
-            ax-load="visible"
+            x-load="visible"
             x-data="message('Component loaded with Async Alpine using the `visible` strategy')"
             x-ignore
             class="bg-yellow-200 p-8 mt-4"

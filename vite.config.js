@@ -6,6 +6,7 @@ import { viteStaticCopy } from 'vite-plugin-static-copy';
 import vue from '@vitejs/plugin-vue'
 import stylelint from 'vite-plugin-stylelint';
 import path from 'path';
+import tailwindcss from '@tailwindcss/vite';
 
 // Match ports in .ddev/config.yaml -> web_extra_exposed_ports
 const HTTP_PORT = 3000;
@@ -18,13 +19,14 @@ export default defineConfig(({ command, mode }) => {
     const origin = env.PRIMARY_SITE_URL ?? 'https://localhost';
 
     let plugins = [
+        tailwindcss(),
         dynamicImport(),
         legacy({
             targets: ['defaults', 'not IE 11']
         }),
-        stylelint({
-            fix: true,
-        }),
+        //stylelint({
+        //    fix: true,
+        //}),
         eslintPlugin({
             cache: false,
             fix: true,
@@ -97,12 +99,12 @@ export default defineConfig(({ command, mode }) => {
                 ],
             },
         },
-        css: {
-            preprocessorOptions: {
-                scss: {
-                    api: 'modern-compiler' // or "modern"
-                }
-            }
-        }
+        //css: {
+        //    preprocessorOptions: {
+        //        scss: {
+        //            api: 'modern-compiler' // or "modern"
+        //        }
+        //    }
+        //}
     }
 });

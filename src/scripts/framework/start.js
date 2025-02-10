@@ -55,9 +55,8 @@ export default class Start {
   // Asynchronous Alpine components
   // @see https://async-alpine.dev/
   asyncAlpineComponents() {
-    AsyncAlpine.init(Alpine);
-    AsyncAlpine.data('message', () => import('../components/alpine/message.js'));
-    AsyncAlpine.start();
+    Alpine.plugin(AsyncAlpine);
     Alpine.start();
+      Alpine.asyncData('message', () => import('../components/alpine/message.js'));
   }
 }

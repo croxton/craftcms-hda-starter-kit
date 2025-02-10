@@ -1,0 +1,21 @@
+/* ============================================================================
+   styles.scss
+   ========================================================================= */
+
+@import "tailwindcss";
+
+@import './base/disclosure.css';
+
+@import './objects/images.css';
+@import './objects/ratio.css';
+@import './objects/share.css';
+@import './objects/viewport.css';
+
+@import './components/menu.css';
+@import './components/revision.css';
+@import './components/transition.css';
+@import './components/video.css';
+
+@config "../../tailwind.config.js";
+
+
