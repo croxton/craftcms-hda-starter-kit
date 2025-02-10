@@ -8,85 +8,41 @@
  * @author Mark Croxton @croxton
  */
 
-.o-ratio {
-  position: relative;
-}
-.o-ratio::after {
-  clear: both;
-  content: '';
-  display: block;
-}
-.o-ratio::before {
-  content: '';
-  display: var(--display, block);
-  float: left;
-  padding-top: calc(100% / (var(--ratio, 1)));
+@utility o-ratio {
+  & {
+    position: relative;
+  }
+  &::after {
+    clear: both;
+    content: '';
+    display: block;
+  }
+  &::before {
+    content: '';
+    display: var(--display, block);
+    float: left;
+    padding-top: calc(100% / (var(--ratio, 1)));
+  }
+
+  /* make object-fit: cover work with the padding hack */
+  & > img.object-cover,
+  & > picture.object-cover,
+  & > video.object-cover {
+    bottom: 0;
+    height: 100%;
+    left: 0;
+    position: var(--position, absolute);
+    right: 0;
+    top: 0;
+    width: 100%;
+  }
+
 }
 
-/* make object-fit: cover work with the padding hack */
-.o-ratio > img.object-cover,
-.o-ratio > picture.object-cover,
-.o-ratio > video.object-cover {
-  bottom: 0;
-  height: 100%;
-  left: 0;
-  position: var(--position, absolute);
-  right: 0;
-  top: 0;
-  width: 100%;
+@utility o-ratio-* {
+  --ratio: --value(--ratio-*, ratio, [ratio]);
 }
 
-@utility o-ratio-1/1 {
-  --ratio: 1/1;
-}
-@utility o-ratio-8/1 {
-  --ratio: 8/1;
-}
-@utility o-ratio-6/1 {
-  --ratio:6/1;
-}
-@utility o-ratio-5/1 {
-  --ratio:5/1;
-}
-@utility o-ratio-4/1 {
-  --ratio:4/1;
-}
-@utility o-ratio-3/1 {
-  --ratio:3/1;
-}
-@utility o-ratio-25/9 {
-  --ratio:25/9;
-}
-@utility o-ratio-21/8 {
-  --ratio:21/8;
-}
-@utility o-ratio-21/9 {
-  --ratio:21/9;
-}
-@utility o-ratio-2/1 {
-  --ratio:2/1;
-}
-@utility o-ratio-16/9 {
-  --ratio:16/9;
-}
-@utility o-ratio-14/9 {
-  --ratio:14/9;
-}
-@utility o-ratio-11/6 {
-  --ratio:11/6;
-}
-@utility o-ratio-3/2 {
-  --ratio:3/2;
-}
-@utility o-ratio-4/3 {
-  --ratio:4/3;
-}
-@utility o-ratio-21/16 {
-  --ratio:21/16;
-}
-@utility o-ratio-3/4 {
-  --ratio:3/4;
-}
 @utility o-ratio-none {
   --position:static;
   --display:none;

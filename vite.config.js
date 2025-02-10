@@ -24,9 +24,9 @@ export default defineConfig(({ command, mode }) => {
         legacy({
             targets: ['defaults', 'not IE 11']
         }),
-        //stylelint({
-        //    fix: true,
-        //}),
+        stylelint({
+            fix: true,
+        }),
         eslintPlugin({
             cache: false,
             fix: true,

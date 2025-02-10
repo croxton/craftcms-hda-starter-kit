@@ -13,8 +13,6 @@ Includes a working demo featuring full page transitions and example `Alpine.js`,
 * Minimalistic JavaScript framework for vanilla JS components:
     * Components can be lazyloaded as they enter the DOM and use loading strategies including `visible`, `idle` and `media`
     * Framework-agnostic - works with vanilla JS, Vue, jQuery, GSAP, Alpine.js or your framework of choice; any third party script can be integrated into the simple component lifecycle
-* SASS auto compiling, prefixing, minifying and sourcemaps
-* CSS Autoprefixer, PostCSS Preset Env for older browsers
 * Legacy bundles for older browsers
 * Image optimisation
 * Static files (fonts, images etc)
@@ -237,15 +235,13 @@ Our aim is to keep markup and logic (styling / scripting) together in one file, 
 This kit gives you the flexibility to find a pragmatic balance between Locality of Behaviour (LoB) and Separation of Concerns (SoC) that suits your project and preferences.
 
 ## Styling
-You may need to create bespoke styles for UI states that can’t easily be expressed with Tailwind CSS classes. This kit allows you to organise these in a [ITCSS](https://www.xfive.co/blog/itcss-scalable-maintainable-css-architecture/)-inspired folder hierarchy, and use [SASS](https://sass-lang.com/) as much or as little as you wish.
+You may need to create bespoke styles for UI states that can’t easily be expressed with Tailwind CSS utility classes. This kit recommends you to organise these in a [ITCSS](https://www.xfive.co/blog/itcss-scalable-maintainable-css-architecture/)-inspired folder hierarchy.
 
-* **Settings** – global variables, config switches etc.
-* **Functions** – globally used functions.
-* **Mixins** – globally used mixins.
+* **Settings** – global CSS variables, config switches etc.
 * **Base** – styling for bare HTML elements (like BODY, H1, A, etc.).
 * **Objects** – class-based selectors which define undecorated, design patterns, intended to be reusable between projects (e.g. `.o-ratio`).
 * **Layouts** – layout grids and containers (e.g. `.l-container`).
-* **Vendor** - third party component stylesheets
+* **Vendor** - third party component stylesheets.
 * **Components** – specific UI components  (e.g. `.c-button`).
 * **Utils** – utilities and helper classes with ability to override anything which goes before (e.g. `.h1`).
 

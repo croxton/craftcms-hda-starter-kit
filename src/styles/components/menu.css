@@ -8,9 +8,9 @@
  */
 
 .c-menu a {
-  padding: theme('spacing.1') 0;
+  padding: .25rem 0;
   &[aria-current="page"] {
-    border-bottom: 1px solid theme('colors.blue.300');
-    color: theme('colors.blue.900');
+    border-bottom: 1px solid var(--color-blue-300);
+    color: var(--color-blue-900);
   }
 }

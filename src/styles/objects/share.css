@@ -19,8 +19,8 @@
 
 .o-share {
   --bdrs: 50%;
-  --bgc: theme('colors.gray.400');
-  --bgch: theme('colors.gray.900');
+  --bgc: var(--color-gray-400);
+  --bgch: var(--color-gray-900);
   --bxsh: 0 0 0 2px hsla(210, 24%, 15%, 0.65);
   --icon: var(--ico-share);
   --icon-bgc:  hsl(210, 24%, 35%);
@@ -54,7 +54,6 @@
 [data-share-item]:focus,
 [data-share-item]:hover {
   background-color: var(--bgch);
-  //box-shadow: var(--bxsh);
 }
 
 /* Modifiers */
@@ -88,8 +87,8 @@
 [data-share-item="copied"],
 [data-share-item="copied"]:hover,
 [data-share-item="copied"]:focus {
-  --bgc: theme('colors.green.600');
-  --bgch: theme('colors.green.600');
+  --bgc: var(--color-green-600);
+  --bgch: var(--color-green-600);
 }
 [data-share-item="copied"] i {
   --icon: var(--ico-copied);

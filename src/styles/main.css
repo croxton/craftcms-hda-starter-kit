@@ -1,21 +1,68 @@
 /* ============================================================================
-   styles.scss
+   main.css
    ========================================================================= */
 
+/* Tailwind CSS: core styles
+   ========================================================================== */
 @import "tailwindcss";
 
-@import './base/disclosure.css';
 
+/* Settings: global variables, config switches
+   ========================================================================== */
+@import './settings/properties.css';
+
+
+/* Base: styles for un-classed HTML elements
+   ========================================================================== */
+@import './base/disclosure.css';
+@import './base/focus.css';
+
+
+/* Vendor: third party components
+   ========================================================================== */
+/**
+  * Add your own vendor styles here, e.g.:
+  *
+  * @import "vendor/acme.css";
+  */
+
+
+/* Objects reusable design patterns - e.g. grids, ratios, vertical flow
+   ========================================================================== */
 @import './objects/images.css';
 @import './objects/ratio.css';
 @import './objects/share.css';
 @import './objects/viewport.css';
 
+
+/* Layouts - layout skeletons
+   ========================================================================== */
+/**
+  * Add your own layout styles here, e.g.:
+  *
+  * @import "layout/grid.css";
+  */
+
+
+/* Components: implementation-specific pieces of UI
+   ========================================================================== */
 @import './components/menu.css';
 @import './components/revision.css';
 @import './components/transition.css';
 @import './components/video.css';
 
+
+/* Utils: utility and helper classes
+   ========================================================================== */
+
+@import './utils/scrollbar.css';
+
+/* Tailwind CSS: config
+   ========================================================================== */
+
+/**
+  * Js configs are supported for backwards compatibility
+  */
 @config "../../tailwind.config.js";
 
 

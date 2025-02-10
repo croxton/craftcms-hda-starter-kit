@@ -219,7 +219,7 @@
             }'>
             <details role="list" :open="isOpen">
                 <summary aria-haspopup="listbox" class="appearance-none list-none">
-                    <input class="p-2 border border-gray-400 rounded w-full text-gray-600 focus:ring-1 focus:ring-blue-500 focus:border-blue-500 focus:outline-none" type="text" @input="getItems" placeholder="search ..." x-model="search">
+                    <input class="p-2 border border-gray-400 rounded w-full text-gray-600 focus:ring-1 focus:ring-blue-500 focus:border-blue-500 focus:outline-hidden" type="text" @input="getItems" placeholder="search ..." x-model="search">
                 </summary>
                 <ul class="border border-gray-200 rounded p-2 shadow-lg max-h-64 overflow-y-scroll" role="listbox" x-on:click.outside="closeSearch">
                     <template x-for="item in getItems" :key="item.id">

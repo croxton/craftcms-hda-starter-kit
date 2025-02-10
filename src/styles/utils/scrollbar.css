@@ -1,22 +1,26 @@
-.scrollbar::-webkit-scrollbar {
-  width: 10px;
-}
-.scrollbar::-webkit-scrollbar-thumb {
-  background: theme('colors.gray.300');
-}
-.scrollbar::-webkit-scrollbar-track {
-  background: rgba(255,255,255,0.2);
-}
-
-/* Hide scrollbar for Chrome, Safari and Opera */
-.no-scrollbar::-webkit-scrollbar {
-  display: none;
+@utility scrollbar {
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: var(--color-gray-300);
+  }
+  &::-webkit-scrollbar-track {
+    background: rgba(255,255,255,0.2);
+  }
 }
 
-/* Hide scrollbar for IE, Edge and Firefox */
-.no-scrollbar {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+@utility no-scrollbar {
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Hide scrollbar for IE, Edge and Firefox */
+  & {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
 }
 
 .scrolling-touch {
