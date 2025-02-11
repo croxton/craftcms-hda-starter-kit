@@ -4,20 +4,18 @@ A solid platform for front-end development when using Craft CMS as a backend, fo
 
 Includes a working demo featuring full page transitions and example `Alpine.js`, `Vue 3` and vanilla JS components.
 
-* [Craft CMS](https://craftcms.com/)
-* [Vite](https://vitejs.dev/) - provides a robust ES6 development environment with script and style injection (HMR, file watching)
-* [htmx](https://htmx.org/) + [Booster Pack](https://github.com/croxton/htmx-booster-pack) for HTML-over-the-wire 
-* [Tailwind CSS](https://tailwindcss.com/) for utility-first CSS
-* [Alpine.js](https://alpinejs.dev/) + [Async Alpine](https://github.com/Accudio/async-alpine) for composing behaviour directly in markup, with support for asynchronous on-demand components
-* [Vue.js](https://vuejs.org/) (v3) for complex reactive applications using SFCs
+* [Craft CMS](https://craftcms.com/) (v5)
+* [Vite](https://vitejs.dev/) (v6) - provides a robust ES6 development environment with script and style injection (HMR, file watching).
+* [htmx](https://htmx.org/) (v2) + [Booster Pack](https://github.com/croxton/htmx-booster-pack) (v1) for HTML-over-the-wire 
+* [Tailwind CSS](https://tailwindcss.com/) (v4) for utility-first CSS.
+* [Alpine.js](https://alpinejs.dev/) (v3) + [Async Alpine](https://github.com/Accudio/async-alpine) (v2) for composing behaviour directly in markup, with support for asynchronous on-demand components.
+* [Vue.js](https://vuejs.org/) (v3) for complex reactive applications using SFCs.
 * Minimalistic JavaScript framework for vanilla JS components:
     * Components can be lazyloaded as they enter the DOM and use loading strategies including `visible`, `idle` and `media`
-    * Framework-agnostic - works with vanilla JS, Vue, jQuery, GSAP, Alpine.js or your framework of choice; any third party script can be integrated into the simple component lifecycle
-* Legacy bundles for older browsers
-* Image optimisation
-* Static files (fonts, images etc)
-* Eslint
-* Stylelint
+    * Framework-agnostic - works with vanilla JS, Vue, jQuery, GSAP, Alpine.js or your framework of choice; any third party script can be integrated into the simple component lifecycle.
+* Legacy bundles for older browsers.
+* Static files (fonts, images etc).
+* Linting: opinionated Eslint and Stylelint configs with Vite plugin checker.
 
 ## Requirements
 
