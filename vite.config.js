@@ -1,12 +1,11 @@
 import { defineConfig, loadEnv } from "vite";
 import dynamicImport from 'vite-plugin-dynamic-import'
-import eslintPlugin from "@nabla/vite-plugin-eslint";
 import legacy from '@vitejs/plugin-legacy';
 import { viteStaticCopy } from 'vite-plugin-static-copy';
 import vue from '@vitejs/plugin-vue'
-import stylelint from 'vite-plugin-stylelint';
 import path from 'path';
 import tailwindcss from '@tailwindcss/vite';
+import checker from 'vite-plugin-checker';
 
 // Match ports in .ddev/config.yaml -> web_extra_exposed_ports
 const HTTP_PORT = 3000;
@@ -24,12 +23,14 @@ export default defineConfig(({ command, mode }) => {
         legacy({
             targets: ['defaults', 'not IE 11']
         }),
-        stylelint({
-            fix: true,
-        }),
-        eslintPlugin({
-            cache: false,
-            fix: true,
+        checker({
+            eslint: {
+                lintCommand: 'eslint "./src/scripts/**/*.{vue,js,jsx,mjs}"',
+                useFlatConfig: true
+            },
+            stylelint : {
+                lintCommand: 'stylelint "./src/styles/**/*.{css,scss}"',
+            },
         }),
         viteStaticCopy({
             targets: [

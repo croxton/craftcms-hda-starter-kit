@@ -1,13 +1,12 @@
 import { defineConfig, loadEnv } from "vite";
 import dynamicImport from 'vite-plugin-dynamic-import'
-import eslintPlugin from "@nabla/vite-plugin-eslint";
 import legacy from '@vitejs/plugin-legacy';
 import { viteStaticCopy } from 'vite-plugin-static-copy';
 import vue from '@vitejs/plugin-vue'
-import stylelint from 'vite-plugin-stylelint';
 import path from 'path';
 import mkcert from 'vite-plugin-mkcert';
 import tailwindcss from '@tailwindcss/vite';
+import checker from 'vite-plugin-checker';
 
 // https://vitejs.dev/config/
 export default defineConfig(({ command, mode }) => {
@@ -18,14 +17,16 @@ export default defineConfig(({ command, mode }) => {
         legacy({
             targets: ['defaults', 'not IE 11']
         }),
+        checker({
+            eslint: {
+                lintCommand: 'eslint "./src/scripts/**/*.{vue,js,jsx,mjs}"',
+                useFlatConfig: true
+            },
+            stylelint : {
+                lintCommand: 'stylelint "./src/styles/**/*.{css,scss}"',
+            },
+        }),
         mkcert(),
-        stylelint({
-            fix: true,
-        }),
-        eslintPlugin({
-            cache: false,
-            fix: true,
-        }),
         viteStaticCopy({
             targets: [
                 {
