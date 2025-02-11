@@ -28,6 +28,7 @@
     "@vitejs/plugin-vue": "^5.0.5",
     "autoprefixer": "^10.4.19",
     "cross-env": "^7.0.3",
+    "esbuild": "^0.25.0",
     "eslint": "^9.20.0",
     "eslint-plugin-compat": "^6.0.0",
     "eslint-plugin-vue": "^9.27.0",
