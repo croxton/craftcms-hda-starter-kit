@@ -98,13 +98,6 @@ export default defineConfig(({ command, mode }) => {
                     `${__dirname}/.eslintcache/**`
                 ],
             },
-        },
-        //css: {
-        //    preprocessorOptions: {
-        //        scss: {
-        //            api: 'modern-compiler' // or "modern"
-        //        }
-        //    }
-        //}
+        }
     }
 });

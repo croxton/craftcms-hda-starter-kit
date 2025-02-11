@@ -7,11 +7,13 @@ import vue from '@vitejs/plugin-vue'
 import stylelint from 'vite-plugin-stylelint';
 import path from 'path';
 import mkcert from 'vite-plugin-mkcert';
+import tailwindcss from '@tailwindcss/vite';
 
 // https://vitejs.dev/config/
 export default defineConfig(({ command, mode }) => {
     const env = loadEnv(mode, process.cwd(), '');
     let plugins = [
+        tailwindcss(),
         dynamicImport(),
         legacy({
             targets: ['defaults', 'not IE 11']
@@ -86,17 +88,10 @@ export default defineConfig(({ command, mode }) => {
                     "**/web/**",
                     "**/vendor/**",
                     `${__dirname}/.idea/**`,
-                    `${__dirname}/.stylelintcache/**`
+                    `${__dirname}/.stylelintcache/**`,
+                    `${__dirname}/.eslintcache/**`
                 ],
             },
-        },
-        css: {
-            preprocessorOptions: {
-                scss: {
-                    api: 'modern-compiler' // or "modern"
-                }
-            }
         }
-
     }
 });
