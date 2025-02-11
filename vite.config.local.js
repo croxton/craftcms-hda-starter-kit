@@ -51,7 +51,7 @@ export default defineConfig(({ command, mode }) => {
                     /*
                     Optionally, manually separate out a vendor chunk containing
                     modules imported by lots of your components
-                    */
+
                     manualChunks: (id) => {
                         if (id.includes("node_modules")) {
                             if (id.includes('alpine')
@@ -63,6 +63,7 @@ export default defineConfig(({ command, mode }) => {
                             }
                         }
                     },
+                    */
                 }
 
             },
