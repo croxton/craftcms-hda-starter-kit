@@ -1,5 +1,5 @@
 /* ============================================================================
-   OBJECT -> RATIO
+   UTILITIES -> RATIO
    ========================================================================= */
 
 /*!
@@ -8,7 +8,7 @@
  * @author Mark Croxton @croxton
  */
 
-@utility o-ratio {
+@utility ratio {
   & {
     position: relative;
   }
@@ -39,11 +39,11 @@
 
 }
 
-@utility o-ratio-* {
+@utility ratio-* {
   --ratio: --value(--ratio-*, ratio, [ratio]);
 }
 
-@utility o-ratio-none {
+@utility ratio-none {
   --position:static;
   --display:none;
 }

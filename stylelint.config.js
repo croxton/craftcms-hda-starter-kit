@@ -55,6 +55,15 @@ export default {
                     "/.+/": "/^.*?theme/"
                 }
             }
+        ],
+        "media-query-no-invalid" : [
+            true,
+            {
+                "ignoreFunctions": [
+                    "theme",
+                    "screen"
+                ]
+            }
         ]
     }
 };

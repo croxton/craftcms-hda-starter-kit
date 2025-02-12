@@ -6,6 +6,7 @@
 
 class Revision {
   constructor() {
+
     htmx.on('htmx:afterSwap', (htmxEvent) => {
       // the latest application revision value
       let revision = htmxEvent.detail.xhr.getResponseHeader('x-revision');

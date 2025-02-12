@@ -6,6 +6,7 @@
     :zoom-animation="true"
     :center="[latitude, longitude]"
     style="height: 500px; width: 100%"
+    class="example"
   >
     <LTileLayer
       :url="url"
@@ -55,4 +56,10 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+  /* Example of using @apply in a Vue SFC   */
+  @reference "../../../styles/main.css";
+  .example {
+    @apply text-red-500;
+  }
+</style>

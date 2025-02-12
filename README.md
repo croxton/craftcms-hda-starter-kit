@@ -233,15 +233,15 @@ Our aim is to keep markup and logic (styling / scripting) together in one file, 
 This kit gives you the flexibility to find a pragmatic balance between Locality of Behaviour (LoB) and Separation of Concerns (SoC) that suits your project and preferences.
 
 ## Styling
-You may need to create bespoke styles for UI states that can’t easily be expressed with Tailwind CSS utility classes. This kit recommends you to organise these in a [ITCSS](https://www.xfive.co/blog/itcss-scalable-maintainable-css-architecture/)-inspired folder hierarchy.
+You may need to create bespoke styles for UI states that can’t easily be expressed with Tailwind CSS utility classes. You can organise these in a [ITCSS](https://www.xfive.co/blog/itcss-scalable-maintainable-css-architecture/)-inspired hierarchy extending Tailwind's cascade layers:
 
-* **Settings** – global CSS variables, config switches etc.
+* **Theme** – global CSS properties and Tailwind theme variables.
 * **Base** – styling for bare HTML elements (like BODY, H1, A, etc.).
-* **Objects** – class-based selectors which define undecorated, design patterns, intended to be reusable between projects (e.g. `.o-ratio`).
+* **Objects** –  `[attribute]` or `.class` based selectors which define undecorated design patterns, intended to be reusable between projects (e.g. `[aria-hidden]`,`[data-share]`, `.o-share`).
 * **Layouts** – layout grids and containers (e.g. `.l-container`).
 * **Vendor** - third party component stylesheets.
-* **Components** – specific UI components  (e.g. `.c-button`).
-* **Utils** – utilities and helper classes with ability to override anything which goes before (e.g. `.h1`).
+* **Components** – specific UI components (e.g. `.c-button`).
+* **Utilities** – utilities and helper classes with ability to override anything which goes before (e.g. `.h1`).
 
 ## Scripting
 `Alpine.js` allows you to express UI component behaviour directly in markup, but sometimes you may need to isolate behaviour in an individual component and load it asynchronously on demand rather than in one big script bundle up-front. This kit allows you to use Async Alpine components, Vue SFCs or roll your own vanilla JS components. The later can be used to load heavy third-party libraries like [GSAP](https://greensock.com/gsap/) in a memory-efficient manner, by wrapping them in a `mount()` / `unmount()` lifecycle.

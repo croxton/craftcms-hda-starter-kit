@@ -1,38 +1,38 @@
+@layer theme, base, objects, layouts, vendor, components, utilities;
+
 /* ============================================================================
    main.css
    ========================================================================= */
 
-/* Tailwind CSS: core styles
+/**
+  * JS configs are supported for backwards compatibility
+  *
+  * @config "../../tailwind.config.js";
+  */
+
+/* Tailwind CSS
    ========================================================================== */
-@import "tailwindcss";
+@import "tailwindcss" source(none);
+@source "../../templates/**/*.twig";
+@source "../../src/scripts/**/*.{js,vue}";
 
 
-/* Settings: global variables, config switches
+/* Theme: CSS variables, properties and configuration
    ========================================================================== */
-@import './settings/properties.css';
+@import './theme/properties.css' layer(theme);
+@import './theme/tailwind.css' layer(theme);
 
 
 /* Base: styles for un-classed HTML elements
    ========================================================================== */
-@import './base/disclosure.css';
-@import './base/focus.css';
+@import './base/disclosure.css' layer(base);
+@import './base/focus.css' layer(base);
 
 
-/* Vendor: third party components
+/* Objects: reusable design patterns - e.g. aria states, ratios, vertical flow
    ========================================================================== */
-/**
-  * Add your own vendor styles here, e.g.:
-  *
-  * @import "vendor/acme.css";
-  */
-
-
-/* Objects reusable design patterns - e.g. grids, ratios, vertical flow
-   ========================================================================== */
-@import './objects/images.css';
-@import './objects/ratio.css';
-@import './objects/share.css';
-@import './objects/viewport.css';
+@import './objects/images.css' layer(objects);
+@import './objects/share.css' layer(objects);
 
 
 /* Layouts - layout skeletons
@@ -40,29 +40,35 @@
 /**
   * Add your own layout styles here, e.g.:
   *
-  * @import "layout/grid.css";
+  * @import "layout/grid.css" layer(layouts);
   */
 
 
-/* Components: implementation-specific pieces of UI
+/* Vendor: third party components
    ========================================================================== */
-@import './components/menu.css';
-@import './components/revision.css';
-@import './components/transition.css';
-@import './components/video.css';
-
-
-/* Utils: utility and helper classes
-   ========================================================================== */
-
-@import './utils/scrollbar.css';
-
-/* Tailwind CSS: config
-   ========================================================================== */
-
 /**
-  * Js configs are supported for backwards compatibility
+  * Add your own vendor styles here, e.g.:
+  *
+  * @import "vendor/acme.css" layer(vendor);
   */
-@config "../../tailwind.config.js";
+
+
+/* Components: implementation-specific pieces of UI (e.g. .c-btn)
+   ========================================================================== */
+@import './components/menu.css' layer(components);
+@import './components/revision.css' layer(components);
+@import './components/transition.css' layer(components);
+@import './components/video.css' layer(components);
+
+
+/* Utilities: utility and helper classes
+   Note: Tailwind utilities defined with the @utility directive are
+   automatically inserted into the utility layer, no need for layer(utilties).
+   ========================================================================== */
+@import './utilities/scrollbar.css';
+@import './utilities/ratio.css';
+@import './utilities/viewport.css';
+
+
 
 

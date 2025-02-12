@@ -1,5 +1,5 @@
 /* ============================================================================
-   OBJECTS -> VIEWPORT
+   UTILITIES -> VIEWPORT
    ========================================================================= */
 
 /*!
@@ -9,30 +9,31 @@
  * @author Mark Croxton @croxton
  */
 
-:root {
-  --vh-span: 1;
-  --vh-offset: 0px;
-}
-
-.o-viewport {
-  --windowWidth: 100vw;
-  min-height: var(--vh-min, calc(var(--windowHeight, 100vh) * var(--vh-span) - var(--vh-offset)));
-
-  @screen md {
-    min-height: var(--vh-min, calc(var(--windowHeight, 100vh) * var(--vh-span)));
+  :root {
+    --vh-span: 1;
+    --vh-offset: 0px;
   }
-}
 
-@utility o-viewport-full {
+  .viewport {
+    --windowWidth: 100vw;
+    min-height: var(--vh-min, calc(var(--windowHeight, 100vh) * var(--vh-span) - var(--vh-offset)));
+
+    @variant md {
+      min-height: var(--vh-min, calc(var(--windowHeight, 100vh) * var(--vh-span)));
+    }
+  }
+
+
+@utility viewport-full {
   --vh-span: 1;
   --vh-min: unset;
 }
 
-@utility o-viewport-* {
+@utility viewport-* {
   --vh-min: calc(var(--windowWidth, 100vw) * 1 / --value(--vh-min-*, ratio, [ratio]));
 }
 
-@utility o-viewport-none {
+@utility viewport-none {
   --vh-span: 0;
   --vh-min: unset;
 }
