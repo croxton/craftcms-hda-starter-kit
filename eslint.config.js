@@ -30,7 +30,7 @@ export default [
         extends: [
             // add more generic rulesets here
             'eslint:recommended',
-            'plugin:vue/vue3-recommended',
+            'plugin:vue/recommended',
             'plugin:compat/recommended',
         ],
         plugins: [
