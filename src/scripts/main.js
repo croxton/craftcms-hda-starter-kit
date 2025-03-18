@@ -6,7 +6,7 @@
  */
 
 /* import styles */
-import '../styles/main.css';
+import '../styles/main.scss';
 
 /* import framework */
 import './framework/getEventListeners';

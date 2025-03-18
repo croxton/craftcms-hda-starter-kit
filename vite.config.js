@@ -4,7 +4,6 @@ import legacy from '@vitejs/plugin-legacy';
 import { viteStaticCopy } from 'vite-plugin-static-copy';
 import vue from '@vitejs/plugin-vue'
 import path from 'path';
-import tailwindcss from '@tailwindcss/vite';
 import checker from 'vite-plugin-checker';
 
 // Match ports in .ddev/config.yaml -> web_extra_exposed_ports
@@ -18,7 +17,6 @@ export default defineConfig(({ command, mode }) => {
     const origin = env.PRIMARY_SITE_URL ?? 'https://localhost';
 
     let plugins = [
-        tailwindcss(),
         dynamicImport(),
         legacy({
             targets: ['defaults', 'not IE 11']
@@ -100,6 +98,13 @@ export default defineConfig(({ command, mode }) => {
                     `${__dirname}/.eslintcache/**`
                 ],
             },
+        },
+        css: {
+            preprocessorOptions: {
+                scss: {
+                    api: 'modern-compiler' // or "modern"
+                }
+            }
         }
     }
 });

@@ -1,0 +1,92 @@
+/* ============================================================================
+   styles.scss
+   ========================================================================= */
+
+/**
+ * Styles used throughout the website.
+ *
+ * @author: Mark Croxton, mcroxton@hallmark-design.co.uk
+ * @copyright: Hallmark Design
+ */
+
+/* Settings: global variables, config switches
+   ========================================================================== */
+@use 'settings/properties';
+
+/* Functions
+   ========================================================================== */
+
+/* Mixins
+   ========================================================================== */
+
+/* Base: styles for un-classed HTML elements
+   ========================================================================== */
+
+/**
+ * This injects Tailwind's base styles, which is a combination of
+ * Normalize.css and some additional base styles.
+ *
+ * You can see the styles here:
+ * https://github.com/tailwindcss/tailwindcss/blob/master/css/preflight.css
+*/
+
+@use "tailwindcss/base";
+
+/**
+  * Add your own base styles here, e.g.:
+  *
+  * @use "base/focus";
+  * @use "base/forms";
+  */
+@use 'base/disclosure';
+@use 'base/focus';
+
+/* Vendor: third party components
+   ========================================================================== */
+
+/* Objects reusable design patterns - e.g. grids, ratios, vertical flow
+   ========================================================================== */
+
+@use 'objects/images';
+@use 'objects/ratio';
+@use 'objects/share';
+@use 'objects/viewport';
+
+/* Layouts - layout skeletons
+   ========================================================================== */
+
+/* Components: implementation-specific pieces of UI
+   ========================================================================== */
+
+/**
+ * This injects any component classes registered by plugins.
+ */
+@use "tailwindcss/components";
+
+/**
+  * Add your own components here, e.g.:
+  *
+  * @use "scss/components/buttons";
+  * @use "scss/components/forms";
+  */
+@use 'components/menu';
+@use 'components/revision';
+@use 'components/transition';
+@use 'components/video';
+
+/* Utils: utility and helper classes
+   ========================================================================== */
+
+/**
+ * This injects all of Tailwind's utility classes, generated based on your
+ * config file.
+ */
+@use "tailwindcss/utilities";
+
+/**
+  * Add your own utilities here, e.g.:
+  *
+  * @use "utils/headings";
+  * @use "utils/prose";
+  */
+@use 'utils/scrollbar';

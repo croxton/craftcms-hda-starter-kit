@@ -1,4 +1,6 @@
-# Hypermedia Driven Application starter kit for Craft CMS
+# Hypermedia Driven Application starter kit for Craft CMS 
+
+### Tailwind 3 version
 
 A solid platform for front-end development when using Craft CMS as a backend, following the [Hypermedia Driven Application (HDA)](https://htmx.org/essays/hypermedia-driven-applications/) architecture and the [Locality of Behaviour](https://htmx.org/essays/locality-of-behaviour/) (LoB) principle. Create highly interactive, SPA-like web apps without the overhead.
 
@@ -7,12 +9,13 @@ Includes a working demo featuring full page transitions and example `Alpine.js`,
 * [Craft CMS](https://craftcms.com/) (v5)
 * [Vite](https://vitejs.dev/) (v6) - provides a robust ES6 development environment with script and style injection (HMR, file watching).
 * [htmx](https://htmx.org/) (v2) + [Booster Pack](https://github.com/croxton/htmx-booster-pack) (v1) for HTML-over-the-wire 
-* [Tailwind CSS](https://tailwindcss.com/) (v4) for utility-first CSS.
+* [Tailwind CSS](https://tailwindcss.com/) (v3) for utility-first CSS.
 * [Alpine.js](https://alpinejs.dev/) (v3) + [Async Alpine](https://github.com/Accudio/async-alpine) (v2) for composing behaviour directly in markup, with support for asynchronous on-demand components.
 * [Vue.js](https://vuejs.org/) (v3) for complex reactive applications using SFCs.
 * Minimalistic JavaScript framework for vanilla JS components:
     * Components can be lazyloaded as they enter the DOM and use loading strategies including `visible`, `idle` and `media`
     * Framework-agnostic - works with vanilla JS, Vue, jQuery, GSAP, Alpine.js or your framework of choice; any third party script can be integrated into the simple component lifecycle.
+* SASS auto compiling, prefixing, minifying and sourcemaps
 * Legacy bundles for older browsers.
 * Static files (fonts, images etc).
 * Linting: opinionated Eslint and Stylelint configs with Vite plugin checker.
@@ -233,15 +236,17 @@ Our aim is to keep markup and logic (styling / scripting) together in one file, 
 This kit gives you the flexibility to find a pragmatic balance between Locality of Behaviour (LoB) and Separation of Concerns (SoC) that suits your project and preferences.
 
 ## Styling
-You may need to create bespoke styles for UI states that can’t easily be expressed with Tailwind CSS utility classes. You can organise these in a [ITCSS](https://www.xfive.co/blog/itcss-scalable-maintainable-css-architecture/)-inspired hierarchy extending Tailwind's cascade layers:
+You may need to create bespoke styles for UI states that can’t easily be expressed with Tailwind CSS classes. This kit allows you to organise these in a [ITCSS](https://www.xfive.co/blog/itcss-scalable-maintainable-css-architecture/)-inspired folder hierarchy, and use [SASS](https://sass-lang.com/) as much or as little as you wish.
 
-* **Theme** – global CSS properties and Tailwind theme variables.
+* **Settings** – global variables, config switches etc.
+* **Functions** – globally used functions.
+* **Mixins** – globally used mixins.
 * **Base** – styling for bare HTML elements (like BODY, H1, A, etc.).
-* **Objects** –  `[attribute]` or `.class` based selectors which define undecorated design patterns, intended to be reusable between projects (e.g. `[aria-hidden]`,`[data-share]`, `.o-share`).
+* **Objects** – class-based selectors which define undecorated, design patterns, intended to be reusable between projects (e.g. `.o-ratio`).
 * **Layouts** – layout grids and containers (e.g. `.l-container`).
-* **Vendor** - third party component stylesheets.
-* **Components** – specific UI components (e.g. `.c-button`).
-* **Utilities** – utilities and helper classes with ability to override anything which goes before (e.g. `.h1`).
+* **Vendor** - third party component stylesheets
+* **Components** – specific UI components  (e.g. `.c-button`).
+* **Utils** – utilities and helper classes with ability to override anything which goes before (e.g. `.h1`).
 
 ## Scripting
 `Alpine.js` allows you to express UI component behaviour directly in markup, but sometimes you may need to isolate behaviour in an individual component and load it asynchronously on demand rather than in one big script bundle up-front. This kit allows you to use Async Alpine components, Vue SFCs or roll your own vanilla JS components. The later can be used to load heavy third-party libraries like [GSAP](https://greensock.com/gsap/) in a memory-efficient manner, by wrapping them in a `mount()` / `unmount()` lifecycle.
@@ -294,7 +299,7 @@ AsyncAlpine.data("message", () => import("../components/alpine/message.js"));
 In your html:
 ```html
   <div
-    ax-load="visible"
+    x-load="visible"
     x-data="message('Component loaded with Async Alpine using the `visible` strategy')"
     x-ignore>
   </div>

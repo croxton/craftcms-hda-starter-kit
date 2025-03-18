@@ -2,16 +2,20 @@
 export default {
     "extends":[
         "stylelint-config-recommended",
+        "stylelint-config-recommended-scss",
         "stylelint-config-recommended-vue"
     ],
     "plugins": [
-        "stylelint-order"
+        "stylelint-order",
+        "stylelint-scss"
     ],
     "rules": {
         "order/properties-alphabetical-order": true,
         "no-descending-specificity": null,
         "no-invalid-position-at-import-rule": null,
         "import-notation": null,
+        "scss/at-rule-no-unknown": null,
+        "scss/at-import-no-partial-leading-underscore": null,
         "at-rule-no-unknown": [
             true,
             {
@@ -28,7 +32,8 @@ export default {
                     "config",
                     "variants",
                     "responsive",
-                    "screen"
+                    "screen",
+                    "use"
                 ]
             }
         ],
