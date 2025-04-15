@@ -7,11 +7,18 @@ export default {
     "plugins": [
         "stylelint-order"
     ],
+    "ignoreFiles": [
+        "src/styles/vendor/**/*.css",
+    ],
     "rules": {
-        "order/properties-alphabetical-order": true,
-        "no-descending-specificity": null,
-        "no-invalid-position-at-import-rule": null,
-        "import-notation": null,
+        "at-rule-no-deprecated": [
+            true,
+            {
+                "ignoreAtRules": [
+                    "apply"
+                ]
+            }
+        ],
         "at-rule-no-unknown": [
             true,
             {
@@ -32,19 +39,11 @@ export default {
                 ]
             }
         ],
-        "at-rule-no-deprecated": [
+        "block-no-empty": [
             true,
             {
-                "ignoreAtRules": [
-                    "apply"
-                ]
-            }
-        ],
-        "function-no-unknown": [
-            true,
-            {
-                "ignoreFunctions": [
-                    "theme"
+                "ignore": [
+                    "comments"
                 ]
             }
         ],
@@ -56,6 +55,15 @@ export default {
                 }
             }
         ],
+        "import-notation": "string",
+        "function-no-unknown": [
+            true,
+            {
+                "ignoreFunctions": [
+                    "theme"
+                ]
+            }
+        ],
         "media-query-no-invalid" : [
             true,
             {
@@ -64,6 +72,10 @@ export default {
                     "screen"
                 ]
             }
-        ]
+        ],
+        "no-descending-specificity": null,
+        "no-duplicate-selectors": true,
+        "no-invalid-position-at-import-rule": null,
+        "order/properties-alphabetical-order": true,
     }
 };
