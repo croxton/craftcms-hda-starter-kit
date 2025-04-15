@@ -9,14 +9,51 @@ export default {
         "stylelint-order",
         "stylelint-scss"
     ],
+    "ignoreFiles": [
+        "src/styles/vendor/**/*.scss",
+    ],
     "rules": {
-        "order/properties-alphabetical-order": true,
+        "at-rule-descriptor-value-no-unknown": null,
+        "at-rule-no-deprecated": [
+            true,
+            {
+                "ignoreAtRules": [
+                    "apply"
+                ]
+            }
+        ],
+        "at-rule-no-unknown": null,
+        "block-no-empty": [
+            true,
+            {
+                "ignore": [
+                    "comments"
+                ]
+            }
+        ],
+        "declaration-property-value-no-unknown": [
+            true,
+            {
+                "ignoreProperties": {
+                    "/.+/": "/^.*?theme/"
+                }
+            }
+        ],
+        "import-notation": "string",
+        "media-query-no-invalid" : [
+            true,
+            {
+                "ignoreFunctions": [
+                    "theme",
+                    "screen"
+                ]
+            }
+        ],
         "no-descending-specificity": null,
-        "no-invalid-position-at-import-rule": null,
-        "import-notation": null,
-        "scss/at-rule-no-unknown": null,
-        "scss/at-import-no-partial-leading-underscore": null,
-        "at-rule-no-unknown": [
+        "no-duplicate-selectors": true,
+        "no-invalid-position-at-import-rule": true,
+        "order/properties-alphabetical-order": true,
+        "scss/at-rule-no-unknown": [
             true,
             {
                 "ignoreAtRules": [
@@ -37,15 +74,7 @@ export default {
                 ]
             }
         ],
-        "at-rule-no-deprecated": [
-            true,
-            {
-                "ignoreAtRules": [
-                    "apply"
-                ]
-            }
-        ],
-        "function-no-unknown": [
+        "scss/function-no-unknown": [
             true,
             {
                 "ignoreFunctions": [
@@ -53,22 +82,6 @@ export default {
                 ]
             }
         ],
-        "declaration-property-value-no-unknown": [
-            true,
-            {
-                "ignoreProperties": {
-                    "/.+/": "/^.*?theme/"
-                }
-            }
-        ],
-        "media-query-no-invalid" : [
-            true,
-            {
-                "ignoreFunctions": [
-                    "theme",
-                    "screen"
-                ]
-            }
-        ]
+        "scss/operator-no-unspaced": null
     }
 };
