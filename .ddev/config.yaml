@@ -6,6 +6,7 @@ webserver_type: nginx-fpm
 xdebug_enabled: false
 additional_hostnames: []
 additional_fqdns: []
+disable_settings_management: true
 database:
     type: mysql
     version: "8.0"
