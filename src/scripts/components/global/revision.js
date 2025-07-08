@@ -9,7 +9,12 @@ class Revision {
 
     htmx.on('htmx:afterSwap', (htmxEvent) => {
       // the latest application revision value
-      let revision = htmxEvent.detail.xhr.getResponseHeader('x-revision');
+      let revision;
+      try {
+        revision = htmxEvent.detail.xhr.getResponseHeader('x-revision');
+      } catch (e) {
+        revision = null;
+      }
 
       // Revision header isn't set for Sprig requests
       if (revision) {
