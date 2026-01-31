@@ -6,4 +6,4 @@
 ## Example: "ddev set_primary_site_url"
 
 sed -i -s "s#YOUR-CRAFT-PROJECT-NAME#${DDEV_SITENAME}#" /var/www/html/.env
-sed -i -s "s#ddev.site/#ddev.site#" /var/www/html/.env
+sed -i -s "s#ddev.site/#ddev\.site#" /var/www/html/.env
