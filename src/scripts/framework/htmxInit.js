@@ -17,6 +17,23 @@ export default class HtmxInit {
     // lock down htmx
     htmx.config.selfRequestsOnly = true;
     htmx.config.allowScriptTags = false;
+    htmx.config.scrollIntoViewOnBoost = false
+
+    // handle boosted link clicks for current page
+    htmx.on('htmx:beforeRequest', (event) => {
+      if (event.detail.boosted) {
+        // Trying to load current page?
+        let thisPage = window.location.href.replace(/\/+$/, '');
+        let requestedPage = event.detail.pathInfo.requestPath.replace(/\/+$/, '');
+        if (thisPage === requestedPage) {
+          // scroll to top
+          window.scrollTo({top: 0, behavior: 'smooth'});
+          // prevent reloading the same page
+          event.preventDefault();
+          return false;
+        }
+      }
+    });
 
     // handle response error
     htmx.on('htmx:responseError', (event) => {
