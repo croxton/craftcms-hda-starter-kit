@@ -29,6 +29,7 @@ export default {
                     "variant",
                     "custom-variant",
                     "plugin",
+                    "reference",
                     "tailwind",
                     "apply",
                     "layer",
@@ -77,5 +78,6 @@ export default {
         "no-duplicate-selectors": true,
         "no-invalid-position-at-import-rule": null,
         "order/properties-alphabetical-order": true,
+        "nesting-selector-no-missing-scoping-root": null
     }
 };
