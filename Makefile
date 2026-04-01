@@ -90,7 +90,7 @@ up:
         ddev auth ssh; \
         ddev start; \
         ddev composer install; \
-        ddev exec npm install --loglevel=error --no-fund; \
+        ddev exec npm ci --loglevel=error --no-fund; \
     else \
         echo "${YELLOW}Your DDEV project is already running.${RESET}"; \
     fi

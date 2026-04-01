@@ -136,7 +136,7 @@ Update the `PRIMARY_SITE_URL` to the host you created, e.g. `https://my-website.
 #### 4. Install Node packages
 ```bash
 # Use Node 20.x or later
-npm install
+npm ci
 ````
 
 #### 5. Install Composer packages
