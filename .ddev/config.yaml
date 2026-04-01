@@ -20,6 +20,10 @@ web_extra_exposed_ports:
       container_port: 3000
       http_port: 3000
       https_port: 3001
+upload_dirs:
+  - ../node_modules
+  - ../storage
+  - cpresources
 
 # Key features of DDEV's config.yaml:
 
