@@ -1,13 +1,13 @@
 {
   "require": {
-    "craftcms/ckeditor": "^4.11.0",
-    "craftcms/cms": "^5.9.4",
+    "craftcms/ckeditor": "^5.4.0",
+    "craftcms/cms": "^5.9.18",
     "craftcms/postmark": "^3.1.0",
     "croxton/imgixer": "^3.0.1",
     "jalendport/craft-preparse": "^3.0.0-alpha.2",
     "nystudio107/craft-vite": "^5.0.1",
-    "putyourlightson/craft-sprig": "^3.7.1",
-    "verbb/image-resizer": "^4.0.4",
+    "putyourlightson/craft-sprig": "^3.7.2",
+    "verbb/image-resizer": "^4.0.6",
     "vlucas/phpdotenv": "^5.6.3"
   },
   "require-dev": {
