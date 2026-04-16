@@ -46,7 +46,14 @@ git init .
 
 These instructions assume you have [installed Docker and DDEV](https://ddev.readthedocs.io/en/stable/users/install/).
 
-#### 1. Configure DDEV (Optional)
+#### 1. Create `.env`
+We prefer to manage environment variables in a root .env file rather than allow DDEV to manage them - please copy the .env.example over:
+
+```bash
+cp .env.example.dev .env
+```
+
+#### 2. Configure DDEV (Optional)
 
 You can skip this step if the name of your root directory matches your desired DDEV subdomain.
 
@@ -62,7 +69,7 @@ Follow the prompts.
 -   **Docroot location:** defaults to `web`, should be kept as-is (press return)
 -   **Project Type:** should be kept as-is (press return)
 
-#### 2. Install Craft
+#### 3. Install Craft
 
 To install Craft and plugins, run the following command and follow the prompts.
 
